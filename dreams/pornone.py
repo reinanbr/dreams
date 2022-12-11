@@ -36,15 +36,42 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 	html_parser = bs(url_html,features="html.parser")
 	
 	#list_a = html_parser.find_all('a')
-	list_a = html_parser.find_all('a',{'role':'menuitem'})
+	list_a = html_parser.find_all('a',{'class':'relative overflow-hidden flex-grow sm:flex-initial bg-white-two dark:bg-black-dark md:h-[235px] border dark:border-black-33 portrait:rounded-none rounded-xl shadow-sm shadow-gray-two dark:shadow-black-three shadow-opacity-5 tracking-normal links'})
+	list_img = html_parser.find_all('img',{'width':'270'})
+	list_span_dur = html_parser.find_all('span',{'class':'rounded text-f11 font-semibold leading-4 text-white ml-2 bg-black-two px-[5px] py-[2px] bg-opacity-50'})
 	list_url = []
+	list_title = []
+	list_imgs = []
+	list_dur = []
 	
+	list_video = []
+	
+	for span_dur in list_span_dur:
+	  list_dur.append(span_dur.text)
+	
+	
+	for img in list_img:
+	  if 'imgvideo' in img['class']:
+	    list_imgs.append(img['src'])
+	    list_title.append(img['alt'])
+	
+	#list_url = list_a
 	for ls in list_a:
-	  #print(ls['class'])
-	  if 'p-2' in ls['class']:
-	    #print(ls)
-	    list_url.append(f'{url_base}/{ls["href"]}')
-	return list_url
+	  list_url.append(ls['href'])
+	  #print(ls['href'])
+# 	  if 'p-2' in ls['class']:
+# 	    #print(ls)
+# 	    list_url.append(f'{url_base}/{ls["href"]}')
+	    
+	for i in range(len(list_url)):
+	  video = {'url':list_url[i],'imgUrl':list_imgs[i],
+	           'duration':list_dur[i],'title':list_title[i]}
+	  list_video.append(video)
+	return list_video
+	
+	
+#query = 'tony tigrao emrrabando joyce oliveira'
+#print((search_porn(query)))
 	
 	
 

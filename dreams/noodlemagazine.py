@@ -14,7 +14,8 @@ headers = {'User-Agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 B
 br.session.headers = headers
 br.session.headers.update(headers)
 
-def search_porn(query,num=20,lang='pt-BR',long=False):
+def search_porn(query,page_limit=2,lang='pt-BR',long=False):
+	print('[nodlemagazine]')
 	#headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko), Chrome/61.0.3163.100 Safari/537.36'}
 	query = '+'.join(query.split(' '))
 	#br.addheaders = headers
@@ -25,32 +26,45 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 #url_test='https://pornoklad.me/videos/pyshnaya-mamka-s-seksualnymi-formami/'
 
 #	print(f'page n:{i}')
-	url_base='https://noodlemagazine.com'
+	url_base='https://noodlemagazine.com' #https://noodlemagazine.com/video/sexo?p=1
 	
-	
-	url = f'{url_base}/video/{query}'
-	
-	url_html = br.get(url)
-	url_html = url_html.text
-	
-	html_parser = bs(url_html,features="html.parser")
-	
-	video_div = html_parser.find('div',{'class':'list_videos'})
-	
+	p=1
+	N = page_limit
 	list_video = []
-	#print(len(list_video_div))
-	for video in video_div.find_all('div',{'class':'item'}):
-	  url_video = f"{url_base}{video.find('a')['href']}"
-	  title_video = video.find('div',{'class':'title'}).text
-	  time_video = video.find('div',{'class':'m_time'}).text
-	  url_img_video = video.find('img')['data-src']
-	  
-	  vid = {'url':url_video,
-	           'url_img':url_img_video,
-	           'title':title_video,
-	           'time':time_video
-	  }
-	  list_video.append(vid)
+	for i in range(N):
+		url = f'{url_base}/video/{query}?p={p}'
+
+		url_html = br.get(url)
+		url_html = url_html.text
+
+		html_parser = bs(url_html,features="html.parser")
+		if 'Nothing Found' in  html_parser.get_text():
+			#print('ops! find the end...')
+			break
+        
+        
+		video_div = html_parser.find('div',{'class':'list_videos'})
+
+		
+		#print(len(list_video_div))
+		for video in video_div.find_all('div',{'class':'item'}):
+			url_video = f"{url_base}{video.find('a')['href']}"
+			title_video = video.find('div',{'class':'title'}).text
+			time_video = video.find('div',{'class':'m_time'}).text
+			url_img_video = video.find('img')['data-src']
+
+			vid = {'url':url_video,
+					'url_img':url_img_video,
+					'title':title_video,
+					'time':time_video
+			}
+			list_video.append(vid)
+
+		print('\r',end='')
+		print(f'finding {len(list_video)} videos from {p} pages...',end='',flush=True)
+		#video_div = html_parser.find_all('div',{'class':'video-item'})
+        
+		p = p + 1
 	  #print(video)
 	  #print()
 	
@@ -75,14 +89,17 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 # 	  video = {'url':list_url[i],'imgUrl':list_imgs[i],
 # 	           'duration':list_dur[i],'title':list_title[i]}
 # 	  list_video.append(video)
+	print('\n')
 	return list_video
 	
 	
-query = 'tigerr benson'
-res = (search_porn(query))
+# query = 'tigerr benson'
+# res = (search_porn(query))
 
-for v in res:
-  print(v,'\n')
+# print(len(res))
+
+#for v in res:
+  #print(v,'\n')
 	
 	
 

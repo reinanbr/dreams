@@ -20,7 +20,16 @@ headers = {'User-Agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 B
 br.session.headers = headers
 br.session.headers.update(headers)
 
-def search_porn(query,num=20,lang='pt-BR',long=False):
+
+
+
+
+
+
+
+
+def search_porn(query,page_limit=2,long=False):
+	print('[plavids]')
 	#headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko), Chrome/61.0.3163.100 Safari/537.36'}
 	query = '+'.join(query.split(' '))
 	#br.addheaders = headers
@@ -35,14 +44,15 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 
 	p = 1
 	list_video = []
-	while(True):
+	N = page_limit
+	for i in range(N):
 #		br = mec.StatefulBrowser()
 #		br.session.headers = headers
 #		br.session.headers.update(headers)
 
 		url = f'{url_base}/videos?q={query}&page={p}' if not long else f'{url_base}/videos?q={query}&duration=long&sort_by=relevance&page={p}'
 #		br.open(url)
-		print(url)
+		#print(url)
 		url_html = br.get(url)
 		#url_html.raise_for_status()
 		url_html = url_html.text
@@ -50,15 +60,16 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 		html_parser = bs(url_html,features="html.parser")
 #		br.close()
 		if 'did not match any videos.' in html_parser.get_text():
-			print('ops! find the end...')
+			#print('ops! find the end...')
 			break
 		if 'Page not found' in html_parser.get_text():
-			print('ops! find the 404...')
+			#print('ops! find the 404...')
 			break
 #		print(html_parser)
 
-		print(html_parser.findAll(text='did not match any videos.'))
-		print(f'page {p}...')
+		#print(html_parser.findAll(text='did not match any videos.'))
+
+		#print(f'finding {len(list_video)} videos from {p} pages...',end='\r')
 	#list_div_content = html_parser.find_all('div',{'class':"card-body"})
 	#list_div_img = html_parser.find_all('div',{'class':'card-img'})
 	#list_div_duration = html_parser.find_all('span',{'class':'duration'})
@@ -91,14 +102,17 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 						'dur':dur
 						}
 					list_video.append(video)
-					print(f'video: {i}...')
+					#print(f'video: {i}...')
 					i = i+1
+			print('\r',end='')
+			print(f'finding {len(list_video)} videos from {p} pages...',end='',flush=True)
+			#video_div = html_parser.find_all('div',{'class':'video-item'})
 			s = s+1
 #		br.close()
 		#p = p + 1
 #	print(len(list_video))
-	
-	return sorted(list_video,key=lambda d: d['dur'],reverse=True)
+	print('\n')
+	return list_video #sorted(list_video,key=lambda d: d['dur'],reverse=True)
 #	print('img',len(list_div_img))
 #	print(list_div_content)
 	#list_div_info += html_parser.find_all('div',{'class':'mbunder'})
@@ -158,14 +172,10 @@ def search_porn(query,num=20,lang='pt-BR',long=False):
 		
 #	return res[:24]
 
-'''
-res = ((get_porn_div('eva notty')))
 
-for v in res:
-	print('')
-	print(v)
+# res = ((search_porn('eva notty')))
 
+# for v in res:
+# 	print('')
+# 	print(v)
 
-def get_source_video(url_video_eporner):
-	pass
-'''

@@ -7,6 +7,8 @@ name = "pypi"
 bs4 = "*"
 mechanicalsoup = "*"
 requests = "*"
+toml = "*"
+ipython = "*"
 
 [dev-packages]
 

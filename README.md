@@ -1,4 +1,4 @@
-<img src='https://raw.githubusercontent.com/reinanbr/dreams/main/img/logo.png'>
+<img  height='200px' width='460px' src='https://raw.githubusercontent.com/reinanbr/dreams/main/img/logo.png'>
 <br>
 <div align='center'>
 <h2>Dreams</h2>
@@ -7,12 +7,19 @@
 <a href='#'><img src='https://img.shields.io/pypi/wheel/dreams'></a>
 <a href='#'><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/dreams"></a>
 <img alt="PyPI - License" src="https://img.shields.io/pypi/l/dreams?color=orange">
-<br/>
+
+<a href='#'><img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/reinanbr/dreams?logo=codefactor">
+</a>
 
 
 <img src='https://img.shields.io/badge/system-linux%20%7C%20deb-brightgreen'>
 
 <img alt="GitHub Pipenv locked Python version" src="https://img.shields.io/github/pipenv/locked/python-version/reinanbr/dreams">
+
+
+<!-- redes sociais -->
+<br/>
+<a href='https://instagram.com/reysofts/'><img src='https://shields.io/badge/insta-reysofts-darkviolet?logo=instagram&style=flat'></a>
 </div>
 
 <br>

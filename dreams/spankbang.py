@@ -76,7 +76,7 @@ def search_porn(query:str,page_number:int=None,page_limit:int=2) -> dict:
     Returns:
         dict: dict with list video's data, ping info, site name, lens video's data
     """
-    print('[spankbang]')
+    #print('[spankbang]')
     query = '+'.join(query.split(' '))
     list_div_content = []
     list_div_info = []
@@ -106,7 +106,7 @@ def search_porn(query:str,page_number:int=None,page_limit:int=2) -> dict:
     print('\n')
     time_ping_end = time.time() - time_ping_init
     
-    data = {'url_base':url_base,'query':query,'ping':time_ping_end,'len_videos':len(list_videos),'videos':list_videos}
+    data = {'url_base':url_base,'query':query,'page_search': f'{url_base}/s/{query}/?o=all','ping':time_ping_end,'len_videos':len(list_videos),'videos':list_videos}
     return data
 	
 	

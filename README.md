@@ -1,8 +1,9 @@
-<img  height='200px' width='460px' src='https://raw.githubusercontent.com/reinanbr/dreams/main/img/logo.png'>
-<br>
+<!-- <img  height='200px' width='460px' src='https://raw.githubusercontent.com/reinanbr/dreams/main/img/logo.png'>
+<br> -->
 <div align='center'>
 <h2>Dreams</h2>
-<p> a beautiful lib, for getting educative video's 🍑</p>
+<hr>
+<p> a beautiful lib, for getting educative video's 🍑 (video's porn)</p>
 <a href='https://pypi.org/project/dreams/'><img src='https://img.shields.io/pypi/v/dreams'></a>
 <a href='#'><img src='https://img.shields.io/pypi/wheel/dreams'></a>
 <a href='#'><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/dreams"></a>
@@ -58,7 +59,10 @@ finding 743 videos from 8 pages...
 743 videos
 
 first video from list:
-{'url': 'https://spankbang.com/7btrt/video/natasha+nice+stepmom+natasha+s+big+tit+cum+candy+treat', 'url_img': 'https://tb-lb.sb-cd.com/t/12309113/1/2/w:800/t6-enh/natasha-nice-stepmom-natasha.jpg', 'title': "Natasha Nice - Stepmom Natasha'S Big Tit Cum Candy Treat", 'time': '43 min'} 
+{'url': 'https://spankbang.com/7btrt/video/natasha+nice+stepmom+natasha+s+big+tit+cum+candy+treat', 
+'url_img': 'https://tb-lb.sb-cd.com/t/12309113/1/2/w:800/t6-enh/natasha-nice-stepmom-natasha.jpg', 
+'title': "Natasha Nice - Stepmom Natasha'S Big Tit Cum Candy Treat", 
+'time': '43 min'} 
 
 ```
 
@@ -103,7 +107,10 @@ result
 finding 743 videos from 8 pages...
 
 spankbang search: 743 videos
-{'url': 'https://spankbang.com/7btrt/video/natasha+nice+stepmom+natasha+s+big+tit+cum+candy+treat', 'url_img': 'https://tb-lb.sb-cd.com/t/12309113/1/2/w:800/t6-enh/natasha-nice-stepmom-natasha.jpg', 'title': "Natasha Nice - Stepmom Natasha'S Big Tit Cum Candy Treat", 'time': '43 min'} 
+{'url': 'https://spankbang.com/7btrt/video/natasha+nice+stepmom+natasha+s+big+tit+cum+candy+treat', 
+'url_img': 'https://tb-lb.sb-cd.com/t/12309113/1/2/w:800/t6-enh/natasha-nice-stepmom-natasha.jpg',
+ 'title': "Natasha Nice - Stepmom Natasha'S Big Tit Cum Candy Treat", 
+ 'time': '43 min'} 
 
 [nodlemagazine]
 finding 1836 videos from 77 pages...

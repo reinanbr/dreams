@@ -1,7 +1,7 @@
 <!-- <img  height='200px' width='460px' src='https://raw.githubusercontent.com/reinanbr/dreams/main/img/logo.png'>
 <br> -->
 <div align='center'>
-<h2>Dreams</h2>
+<h1>Dreams</h1>
 <hr>
 <p> a beautiful lib, for getting educative video's 🍑 (video's porn)</p>
 <a href='https://pypi.org/project/dreams/'><img src='https://img.shields.io/pypi/v/dreams'></a>

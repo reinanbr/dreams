@@ -4,22 +4,29 @@ import mechanicalsoup as mec
 import re
 import time
 
+
+
+
+headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
+            'connection': 'keep-alive', 'upgrade-insecure-requests': '1', 
+#            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
+            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'accept-encoding': 'gzip, deflate',
+            'accept-language': 'pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6'}
+
+
+
+
+
 br = mec.StatefulBrowser()
-
-
-headers = {'User-Agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36'}
 url_base='https://ukdevilz.com'
-
-
 br.session.headers = headers
 br.session.headers.update(headers)
 
 
-
-
 def get_videos_bg_link(url:str) -> list:
 
-    assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
+    assert (url_base in url), '[error ukevids]: it is not a url from ukevids!'
     url_html = br.get(url)
     url_html = url_html.text
     html_parser = bs(url_html,features="html.parser")
@@ -107,4 +114,19 @@ def search_porn(query,page_limit=2,page_number:int=None):
 #     print(f'[{i}]',v,'\n')
 #     i=i+1
 
-	
+
+
+
+#in the last option
+def get_video_url(video):
+    url_html = br.get(video['url'])
+    #print(url_html)
+    url_html = url_html.text
+    html_parser = bs(url_html,features="html.parser")
+    #print(html_parser)
+    if ('Sorry, this video has been deleted' in  html_parser.get_text()):
+        return f"the [{video['title']}-{video['time']}] has been deleted!"
+    else:
+        url_video = html_parser.find('iframe',{'id':'iplayer'})['src'].split('&amp')[0]
+        url_video = f'{url_base}{url_video}'
+        return url_video

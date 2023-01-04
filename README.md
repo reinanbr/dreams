@@ -2,7 +2,7 @@
 <br> -->
 <div align='center'>
 <h1>Dreams</h1>
-<hr>
+
 <p> a beautiful lib, for getting educative video's 🍑 (video's porn)</p>
 <a href='https://pypi.org/project/dreams/'><img src='https://img.shields.io/pypi/v/dreams'></a>
 <a href='#'><img src='https://img.shields.io/pypi/wheel/dreams'></a>

@@ -15,9 +15,6 @@ headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 B
             'accept-language': 'pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6'}
 
 
-
-
-
 br = mec.StatefulBrowser()
 url_base='https://ukdevilz.com'
 br.session.headers = headers
@@ -118,7 +115,7 @@ def search_porn(query,page_limit=2,page_number:int=None):
 
 
 #in the last option
-def get_video_url(video):
+def get_video_embed(video):
     url_html = br.get(video['url'])
     #print(url_html)
     url_html = url_html.text

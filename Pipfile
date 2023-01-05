@@ -9,6 +9,8 @@ mechanicalsoup = "*"
 requests = "*"
 toml = "*"
 ipython = "*"
+kitano = "*"
+requests-html = "*"
 
 [dev-packages]
 

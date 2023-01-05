@@ -6,6 +6,17 @@ import re
 import logging
 import time
 
+from dreams.settings import puts
+from requests_html import HTMLSession
+asession = HTMLSession()
+
+
+
+from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base
+import kitano.logging as lg
+
+site_name = 'spankbang'
+lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
 
 
 headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
@@ -23,19 +34,29 @@ br = mec.StatefulBrowser()
 br.session.headers = headers
 br.session.headers.update(headers)
 
-count_video_ = 0
-def get_videos_bg_link(url:str) -> list:
+
+
+
+
+
+
+
+def get_videos_bg_link(url:str,page_number:int) -> list:
 
     assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
     url_html = br.get(url)
     url_html = url_html.text
     html_parser = bs(url_html,features="html.parser")
-    assert (not ('We could not find any videos for' in  html_parser.get_text())), '[error spankbang]: site dont have videos more here page!'
+    #assert (not ('We could not find any videos for' in  html_parser.get_text())), '[error spankbang]: site dont have videos more here page!'
 
     try:
         video_div = html_parser.find_all('div',{'class':'video-item'})
     except:
-        raise Exception('[error spankbang]: dont find any videos here page!')
+        if argument_bool_throw_error_find_videos:
+            pass
+            return False
+        else:
+            raise Exception('[error spankbang]: dont find any videos here page!')
 
     list_video = []
     for video in video_div:
@@ -52,13 +73,16 @@ def get_videos_bg_link(url:str) -> list:
             pass
 
         dur = int(time_video.split(' min')[0])*60
-        vid = {'url':url_video,
-                'url_img':url_img_video,
-                'title':title_video,
+        vid = {'title':title_video,
                 'time':time_video,
-                'gif':gif_url,
+                'dur':dur,
                 'stats':stats,
-                'dur':dur
+                'page_number':page_number,
+                'url':url_video,
+                'url_font':url,
+                'url_img':url_img_video,
+
+                'gif':gif_url,
         }
         list_video.append(vid)
         #count_video_ = count_video_ + 1
@@ -68,9 +92,18 @@ def get_videos_bg_link(url:str) -> list:
 
 
 
-def search_porn(query:str,page_number:int=None,page_limit:int=2) -> dict:
+
+
+
+
+def url_base_search_page(query,p):
+    return f'{url_base}/s/{query}/{p}/?o=trending'
+
+
+
+def search_porn(query:str,page_limit:int=2,page_number=None):
     """ a simple function for return data video's porn from SpankBang search
-    
+
     Example:
         >>> import dreams.spankbang as sb
         >>> sb.search_porn('natasha nice',page_limit=1)
@@ -85,46 +118,25 @@ def search_porn(query:str,page_number:int=None,page_limit:int=2) -> dict:
     Returns:
         dict: dict with list video's data, ping info, site name, lens video's data
     """
-    #print('[spankbang]')
-    query = '+'.join(query.split(' '))
-    list_div_content = []
-    list_div_info = []
-    list_videos = []
+    return search_porn_base(query=query,
+                            url_base=url_base,
+                            page_limit=page_limit,
+                            page_number=page_number,
+                            call_get_videos_site=get_videos_bg_link,
+                            url_base_page_number_search=url_base_search_page)
 
-    time_ping_init = time.time()
-    if not page_number:
-        p = 1
-        N = page_limit
-        for i in range(N):
-            #print(p)
-            url = f'{url_base}/s/{query}/{p}/?o=all'
-            vds = get_videos_bg_link(url)
-            list_videos = list_videos+vds
-            print('\r',end='')
-            print(f'finding {len(list_videos)} videos from {p} pages...',end='',flush=True)
 
-            p = p + 1
 
-    else:
-        p = page_number
-        url = f'{url_base}/s/{query}/{p}/?o=all'
-        list_videos = get_videos_bg_link(url)
-        print('\r',end='')
-        print(f'{len(list_videos)} videos finds from page search number {p}!',end='',flush=True)
 
-    print('\n')
-    time_ping_end = time.time() - time_ping_init
+
+
+
+def get_video_embed(video):
+    res = asession.get(video['url'])
+    #print(res.text)
+    html_parser = bs(res.text,features="html.parser")
+
+    video = html_parser.find('video')
+    link = video.find('source')['src']
     
-    data = {'url_base':url_base,'query':query,'page_search': f'{url_base}/s/{query}/?o=all','ping':time_ping_end,'len_videos':len(list_videos),'videos':list_videos}
-    return data
-	
-	
-# query = 'alessandra marques'
-# res = (search_porn(query))
-
-# i=0
-# for v in res:
-#     print(f'[{i}]',v,'\n')
-#     i=i+1
-
-count_video_ = 0
+    return link

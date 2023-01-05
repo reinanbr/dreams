@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(name='dreams',
-    version='0.0.8.5',
+    version='0.1.0',
     url='https://github.com/reinanbr/dreams',
     license='BSD v3',
     author='Reinan Br',
@@ -18,4 +18,4 @@ setup(name='dreams',
     keywords='video link api porn',
     description=u"Library for getting educative url video's",
     packages=find_packages(),
-    install_requires=['requests','mechanicalsoup','bs4','toml'],)
+    install_requires=['requests','mechanicalsoup','bs4','requests-html','kitano'],)

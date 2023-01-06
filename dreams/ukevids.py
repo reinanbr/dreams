@@ -4,6 +4,10 @@ import mechanicalsoup as mec
 import re
 import time
 
+from dreams.settings import puts
+from requests_html import HTMLSession
+asession = HTMLSession()
+
 from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base
 import kitano.logging as lg
 
@@ -64,8 +68,7 @@ def get_videos_uk_link(url:str,page_number:int) -> list:
                 'page_number':page_number,
                 'url_font':url,
                 'url':url_video,
-                'url_img':url_img_video,
-
+                'thumbnail':url_img_video,
                 # 'gif':gif_url,
         }
         list_video.append(vid)
@@ -102,16 +105,28 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
 
 
 
-#in the last option
+# #in the last option
+# def get_video_embed(video):
+#     url_html = br.get(video['url'])
+#     #print(url_html)
+#     url_html = url_html.text
+#     html_parser = bs(url_html,features="html.parser")
+#     #print(html_parser)
+#     if ('Sorry, this video has been deleted' in  html_parser.get_text()):
+#         return f"the [{video['title']}-{video['time']}] has been deleted!"
+#     else:
+#         url_video = html_parser.find('iframe',{'id':'iplayer'})['src'].split('&amp')[0]
+#         url_video = f'{url_base}{url_video}'
+#         return url_video
+
+
+
+
 def get_video_embed(video):
-    url_html = br.get(video['url'])
-    #print(url_html)
-    url_html = url_html.text
-    html_parser = bs(url_html,features="html.parser")
-    #print(html_parser)
-    if ('Sorry, this video has been deleted' in  html_parser.get_text()):
-        return f"the [{video['title']}-{video['time']}] has been deleted!"
-    else:
-        url_video = html_parser.find('iframe',{'id':'iplayer'})['src'].split('&amp')[0]
-        url_video = f'{url_base}{url_video}'
-        return url_video
+    res = asession.get(video['url'])
+    print(res.text)
+    html_parser = bs(res.text,features="html.parser")
+
+    video = html_parser.find('iframe')
+    link = f"{url_base}{video['src'].split('&a=1')[0]}"
+    return link

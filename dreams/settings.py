@@ -59,10 +59,17 @@ def search_porn_base(query:str,
         len_pg = None
         len_videos_pages = len_videos
     else:
-        len_pg = p
+        len_pg = p-1
         len_videos_pages = int(len_videos/len_pg)
 
-    data = {'url_base':url_base,'query':query,'url_search':f'{url_base}/video/{query}','ping':time_ping_end,'len_pages':len_pg,'len_videos':len_videos,'videos_per_pages':len_videos_pages,'videos':list_videos}
+    data = {'url_base':url_base,
+            'query':query,
+            'url_search':f'{url_base}/video/{query}',
+            'ping':time_ping_end,
+            'videos_per_pages':len_videos_pages,
+            'len_pages':len_pg,
+            'len_videos':len_videos,
+            'videos':list_videos}
     return data
 
 

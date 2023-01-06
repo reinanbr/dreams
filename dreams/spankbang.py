@@ -80,9 +80,9 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                 'page_number':page_number,
                 'url':url_video,
                 'url_font':url,
-                'url_img':url_img_video,
+                'thumbnail':url_img_video,
 
-                'gif':gif_url,
+                'preview':gif_url,
         }
         list_video.append(vid)
         #count_video_ = count_video_ + 1

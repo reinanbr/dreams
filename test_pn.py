@@ -1,9 +1,6 @@
 
-import dreams.pornone as pn
+import dreams.ukevids as uk
 
-vds = pn.search_porn('pamela rios mother',page_limit=20)
+vds = uk.search_porn('natasha nice',page_limit=4)
 
-for vd in vds['videos']:
-	print(vd,'\n')
-
-print(pn.get_video_embed(vds['videos'][0]))
+print(vds)

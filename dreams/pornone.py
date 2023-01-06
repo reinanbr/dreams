@@ -110,7 +110,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                     'page_number':page_number,
                     'url':url_video,
                     'url_font':url,
-                    'url_img':url_img,
+                    'thumbnail':url_img,
 
                     #'gif':gif_url,
             }
@@ -140,7 +140,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
         title_video = vd.find('div',{'class':'leading-[22px]'}).text
         time_video = vd.find('span',{'class':'text-f13'}).text
         stats = vd.find('div',{'class':'vidInfo'}).text
-        url_img = vd.find('img')['src']
+        url_img = vd.find('img',{'class':'imgvideo'})['src']
         url_video = vd['href']
 
 
@@ -154,7 +154,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                 'page_number':page_number,
                 'url':url_video,
                 'url_font':url,
-                'url_img':url_img,
+                'thumbnail':url_img,
 
                 #'gif':gif_url,
         }

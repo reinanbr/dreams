@@ -2,8 +2,6 @@
 
  <img  height='200px' width='460px' src='https://raw.githubusercontent.com/reinanbr/dreams/main/img/logo.jpeg'>
 
-<br>
-
 <h1>Dreams</h1>
 
 <p> a beautiful lib, for getting educative video's 🍑 (video's porn)</p>
@@ -59,7 +57,7 @@ if you want help it free project, <a href="https://github.com/reinanbr/dreams" a
 import dreams.spankbang as sb
 
 query = 'natasha nice'
-page_limit = 2
+page_limit = 4
 ```
 
 getting data
@@ -67,8 +65,11 @@ getting data
 
 >>> sb_videos = sb.search_porn(query,page_limit)
 
-finding 99 videos from 1 pages...
-finding 198 videos from 2 pages...
+[21:47:07 05/01/2023 (spankbang)]:  finding 99 videos from 1 pages... 
+[21:47:09 05/01/2023 (spankbang)]:  finding 198 videos from 2 pages... 
+[21:47:10 05/01/2023 (spankbang)]:  finding 297 videos from 3 pages... 
+[21:47:11 05/01/2023 (spankbang)]:  finding 393 videos from 4 pages... 
+
 ```
 ```py
 >>> print(f'data: {sb_videos}','\n')
@@ -99,13 +100,11 @@ data: {'url_base': 'https://spankbang.com',
 >>> import dreams.pornone as pn
 >>> vds = pn.search_porn('pamela rios mother',page_limit=4)
 
-finding 36 videos from 1 pages...[20:03:48 05/01/2023 (pornone)]:  is not page pornstar - https://pornone.com/search/?q=pamela+rios+mother&sort=relevance&filter=&page=2 
+[21:49:31 05/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
+[21:49:32 05/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
+[21:49:34 05/01/2023 (pornone)]:  finding 108 videos from 3 pages... 
+[21:49:35 05/01/2023 (pornone)]:  finding 144 videos from 4 pages... 
 
-finding 72 videos from 2 pages...[20:03:49 05/01/2023 (pornone)]:  is not page pornstar - https://pornone.com/search/?q=pamela+rios+mother&sort=relevance&filter=&page=3 
-
-finding 108 videos from 3 pages...[20:03:50 05/01/2023 (pornone)]:  is not page pornstar - https://pornone.com/search/?q=pamela+rios+mother&sort=relevance&filter=&page=4 
-
-finding 144 videos from 4 pages...
 ```
 ```py
 >>> vds
@@ -130,15 +129,14 @@ if you seach just the name pornstar (saved on site pornone), he return the video
 ```py
 >>> vds = pn.search_porn('natasha nice',page_limit=4)
 
-[20:38:58 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/1/ 
-
-finding 36 videos from 1 pages...[20:38:59 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/2/ 
-
-finding 72 videos from 2 pages...[20:39:00 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/3/ 
-
-finding 108 videos from 3 pages...[20:39:02 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/4/ 
-
-finding 144 videos from 4 pages...
+[21:44:24 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/1/ 
+[21:44:24 05/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
+[21:44:25 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/2/ 
+[21:44:25 05/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
+[21:44:27 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/3/ 
+[21:44:27 05/01/2023 (pornone)]:  finding 108 videos from 3 pages... 
+[21:44:28 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/4/ 
+[21:44:28 05/01/2023 (pornone)]:  finding 144 videos from 4 pages... 
 ```
 ```py
 >>> vds
@@ -168,10 +166,11 @@ finding 144 videos from 4 pages...
 
 >>> vds = uk.search_porn('natasha nice',page_limit=4)
 
-finding 24 videos from 1 pages...
-finding 48 videos from 2 pages...
-finding 72 videos from 3 pages...
-finding 96 videos from 4 pages...
+[21:50:41 05/01/2023 (ukevids)]:  finding 20 videos from 1 pages... 
+[21:50:41 05/01/2023 (ukevids)]:  finding 40 videos from 2 pages... 
+[21:50:41 05/01/2023 (ukevids)]:  finding 60 videos from 3 pages... 
+[21:50:42 05/01/2023 (ukevids)]:  finding 80 videos from 4 pages... 
+
 ```
 ```py
 >>> vds

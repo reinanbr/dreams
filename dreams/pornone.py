@@ -119,7 +119,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
 
 
     else:
-       puts(f'is not page pornstar - {url}')
+       #puts(f'is not page pornstar - {url}')
 
     #assert (not ('We could not find any videos for' in  html_parser.get_text())), '[error spankbang]: site dont have videos more here page!'
 

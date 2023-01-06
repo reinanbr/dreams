@@ -23,6 +23,8 @@ def search_porn_base(query:str,
                      url_base_page_number_search,
                      page_limit=2,
                      page_number:int=None):
+    
+    
     query = '+'.join(query.split(' '))
     list_videos = []
 
@@ -36,8 +38,8 @@ def search_porn_base(query:str,
             vds = call_get_videos_site(url,page_number=p)
             if vds:
                 list_videos = list_videos+vds
-                print('\r',end='')
-                print(f'finding {len(list_videos)} videos from {p} pages...',end='',flush=True)
+                #print('\r',end='')
+                puts(f'finding {len(list_videos)} videos from {p} pages...') #,end='',flush=True)
 
                 p = p + 1
             else:
@@ -48,8 +50,8 @@ def search_porn_base(query:str,
         p = page_number
         url = url_base_page_number_search(query,p) #f'{url_base}/s/{query}/{p}/?o=all'
         list_videos = call_get_videos_site(url,page_number=p)
-        print('\r',end='')
-        print(f'{len(list_videos)} videos finds from page search number {p}!',end='',flush=True)
+        #print('\r',end='')
+        puts(f'{len(list_videos)} videos finds from page search number {p}!')#,end='',flush=True)
 
     print('\n')
     time_ping_end = time.time() - time_ping_init

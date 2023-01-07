@@ -57,15 +57,15 @@ if you want help it free project, <a href="https://github.com/reinanbr/dreams" a
 getting data
 ```py
 
-In [7]: import dreams.spankbang as sp
+>>> import dreams.spankbang as sp
 
-In [8]: vd = sp.search_porn('natasha nice',page_limit=2)
+>>> vd = sp.search_porn('natasha nice',page_limit=2)
 [20:07:52 07/01/2023 (SpankBang)]:  finding 98 videos from 1 pages... 
 [20:07:53 07/01/2023 (SpankBang)]:  finding 193 videos from 2 pages... 
 
 
-In [9]: vd
-Out[9]: SpankBang(site_name='SpankBang',
+>>> vd
+SpankBang(site_name='SpankBang',
 url_base='https://spankbang.com', 
 query='natasha+nice', 
 url_search='https://spankbang.com/video/natasha+nice', 
@@ -90,14 +90,15 @@ videos=[
 
 ```py
 
-In [1]: import dreams.pornone as pn
+>>> import dreams.pornone as pn
 
-In [2]: vd = pn.search_porn('natasha nice mother',page_limit=2)
+>>> vd = pn.search_porn('natasha nice mother',page_limit=2)
 [19:55:22 07/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
 [19:55:23 07/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
 
-In [3]: vd
-Out[3]: pornone(site_name='pornone',
+
+>>> vd
+pornone(site_name='pornone',
 url_base='https://pornone.com', 
 query='natasha+nice+mother', 
 url_search='https://pornone.com/video/natasha+nice+mother', 
@@ -123,14 +124,14 @@ if you seach just the name pornstar (saved on site pornone), he return the video
 
 ```py
 
-In [5]: vd = pn.search_porn('natasha nice',page_limit=2)
+>>> vd = pn.search_porn('natasha nice',page_limit=2)
 [20:01:30 07/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/1/ 
 [20:01:30 07/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
 [20:01:31 07/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/2/ 
 [20:01:31 07/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
 
-In [6]: vd
-Out[6]: pornone(site_name='pornone', 
+>>> vd
+pornone(site_name='pornone', 
 url_base='https://pornone.com', 
 query='natasha+nice', 
 url_search='https://pornone.com/video/natasha+nice',
@@ -154,14 +155,15 @@ videos=[
 
 ```py
 
-In [8]: import dreams.ukevids as uk
+>>> import dreams.ukevids as uk
 
-In [9]: uk.search_porn('natasha nice',page_limit=2)
+>>> vd = uk.search_porn('natasha nice',page_limit=2)
 [16:24:24 07/01/2023 (ukevids)]:  finding 24 videos from 1 pages... 
 [16:24:24 07/01/2023 (ukevids)]:  finding 48 videos from 2 pages... 
 
 
-Out[9]: ukevids(site_name='ukevids',
+>>> vd
+ukevids(site_name='ukevids',
 url_base='https://ukdevilz.com', 
 query='natasha+nice', 
 url_search='https://ukdevilz.com/video/natasha+nice',

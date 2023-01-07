@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests as rq
 import http.cookiejar
+from collections import namedtuple
 from dreams.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
@@ -114,7 +115,9 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
 
                     #'gif':gif_url,
             }
-            list_video.append(vid)
+            Vid = namedtuple(site_name,vid)
+            v = Vid(**vid)
+            list_video.append(v)
         return list_video
 
 
@@ -158,7 +161,9 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
 
                 #'gif':gif_url,
         }
-        list_video.append(vid)
+        Vid = namedtuple(site_name,vid)
+        v = Vid(**vid)
+        list_video.append(v)
        return list_video
 
 
@@ -193,6 +198,7 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
     """
     return search_porn_base(query=query,
                             url_base=url_base,
+                            site_name=site_name,
                             page_limit=page_limit,
                             page_number=page_number,
                             call_get_videos_site=get_videos_bg_link,

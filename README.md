@@ -53,142 +53,132 @@ if you want help it free project, <a href="https://github.com/reinanbr/dreams" a
 ## getting videos data
 
 ### SpankBang
-```py
-import dreams.spankbang as sb
-
-query = 'natasha nice'
-page_limit = 4
-```
 
 getting data
 ```py
 
->>> sb_videos = sb.search_porn(query,page_limit)
+In [7]: import dreams.spankbang as sp
 
-[21:47:07 05/01/2023 (spankbang)]:  finding 99 videos from 1 pages... 
-[21:47:09 05/01/2023 (spankbang)]:  finding 198 videos from 2 pages... 
-[21:47:10 05/01/2023 (spankbang)]:  finding 297 videos from 3 pages... 
-[21:47:11 05/01/2023 (spankbang)]:  finding 393 videos from 4 pages... 
+In [8]: vd = sp.search_porn('natasha nice',page_limit=2)
+[20:07:52 07/01/2023 (SpankBang)]:  finding 98 videos from 1 pages... 
+[20:07:53 07/01/2023 (SpankBang)]:  finding 193 videos from 2 pages... 
 
-```
-```py
->>> print(f'data: {sb_videos}','\n')
 
-data: {'url_base': 'https://spankbang.com', 
-'query': 'natasha+nice', 
-'url_search': 'https://spankbang.com/video/natasha+nice', 
-'ping': 3.6706933975219727, 
-'len_pages': 2, 
-'videos_per_pages': 99, 
-'len_videos': 198, 
-'videos': [{'title': 'natasha.nice.and.lumi.ray.cumming.in.for.a.wet.landing',
-     'time': '34 min', 
-     'dur': 2040, 
-     'stats': '\n11K\n91%\n6 days\n\xa0\n\n', 
-     'page_number': 1, 
-     'url': 'https://spankbang.com/7mwzt/video/natasha+nice+and+lumi+ray+cumming+in+for+a+wet+landing', 
-     'url_font': 'https://spankbang.com/s/natasha+nice/1/?o=trending', 
-     'thumbnail': 'https://tb-lb.sb-cd.com/t/12826505/1/2/w:800/t6-enh/natasha-nice-and-lumi-ray-cumm.jpg', 
-     'preview': 'https://tbv.sb-cd.com/t/12826505/1/2/td.mp4'}, 
-....
+In [9]: vd
+Out[9]: SpankBang(site_name='SpankBang',
+url_base='https://spankbang.com', 
+query='natasha+nice', 
+url_search='https://spankbang.com/video/natasha+nice', 
+ping=3.639028787612915, 
+videos_per_pages=96, len_pages=2, 
+len_videos=193, 
+videos=[
+    spankbang_video(title='natasha.nice.and.lumi.ray.cumming.in.for.a.wet.landing', 
+    time='34 min', 
+    dur=2040, 
+    stats='\n13K\n91%\n9 days\n\xa0\n\n', 
+    page_number=1, 
+    url='https://spankbang.com/7mwzt/video/natasha+nice+and+lumi+ray+cumming+in+for+a+wet+landing', 
+    url_font='https://spankbang.com/s/natasha+nice/1/?o=trending', 
+    thumbnail='https://tb-lb.sb-cd.com/t/12826505/1/2/w:800/t6-enh/natasha-nice-and-lumi-ray-cumm.jpg', 
+    preview='https://tbv.sb-cd.com/t/12826505/1/2/td.mp4'),
+    ...
 ```
 
 
 ### Pornone
 
 ```py
->>> import dreams.pornone as pn
->>> vds = pn.search_porn('pamela rios mother',page_limit=4)
 
-[21:49:31 05/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
-[21:49:32 05/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
-[21:49:34 05/01/2023 (pornone)]:  finding 108 videos from 3 pages... 
-[21:49:35 05/01/2023 (pornone)]:  finding 144 videos from 4 pages... 
+In [1]: import dreams.pornone as pn
 
+In [2]: vd = pn.search_porn('natasha nice mother',page_limit=2)
+[19:55:22 07/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
+[19:55:23 07/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
+
+In [3]: vd
+Out[3]: pornone(site_name='pornone',
+url_base='https://pornone.com', 
+query='natasha+nice+mother', 
+url_search='https://pornone.com/video/natasha+nice+mother', 
+ping=2.7822909355163574, 
+videos_per_pages=36, 
+len_pages=2, 
+len_videos=72, 
+videos=[
+    pornone_video(title='Mother Natasha And Her Stepson', 
+    time='31:16\n', 
+    dur=1876, 
+    stats='\n\n\n7,066\n\n\n\n4mo ago\n\n\n\n100%\n\n', 
+    page_number=1, 
+    url='https://pornone.com/cougar/mother-natasha-and-her-stepson/278036723/'
+    url_font='https://pornone.com/search/?q=natasha+nice+mother&sort=relevance&filter=&page=1', 
+    thumbnail='https://th-eu4.pornone.com/t/23/278036723/d73.jpg'),
+    ...
 ```
-```py
->>> vds
 
-{'url_base': 'https://pornone.com', 
-'query': 'pamela+rios+mother', 
-'url_search': 'https://pornone.com/video/pamela+rios+mother', 
-'ping': 4.651678562164307, 
-'videos_per_pages': 36, 
-'len_pages': 4, 
-'len_videos': 144, 
-'videos': [{'title': 'Pamela Rios ', 'time': '19:37\n', 
-    'dur': 1177, 
-    'stats': '\n\n\n88,251\n\n\n\n41mo ago\n\n\n\n99%\n\n', 
-    'page_number': 1, 
-    'url': 'https://pornone.com/housewife/pamela-rios/276625807/', 
-    'url_font': 'https://pornone.com/search/?q=pamela+rios+mother&sort=relevance&filter=&page=1', 'thumbnail': 'https://th-eu4.pornone.com/t/7/276625807/b56.jpg'}, 
-     ...
-```
 
 if you seach just the name pornstar (saved on site pornone), he return the videos from page pornstar
-```py
->>> vds = pn.search_porn('natasha nice',page_limit=4)
 
-[21:44:24 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/1/ 
-[21:44:24 05/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
-[21:44:25 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/2/ 
-[21:44:25 05/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
-[21:44:27 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/3/ 
-[21:44:27 05/01/2023 (pornone)]:  finding 108 videos from 3 pages... 
-[21:44:28 05/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/4/ 
-[21:44:28 05/01/2023 (pornone)]:  finding 144 videos from 4 pages... 
-```
-```py
->>> vds
 
-{'url_base': 'https://pornone.com', 
-'query': 'natasha+nice', 
-'url_search': 'https://pornone.com/video/natasha+nice', 
-'ping': 5.803735971450806, 
-'videos_per_pages': 36, 
-'len_pages': 4, 
-'len_videos': 144, 
-'videos': [{'title': 'Natasha Nice & Kenzie Love \u200b- Home For The Holidays', 
-    'time': '40:13\n', 
-    'dur': 2413, 
-    'stats': '\n\n\n12\n\n\n\n2h ago\n\n\n\n\n\n', 
-    'page_number': 1, 
-    'url': 'https://pornone.com/love/natasha-nice-kenzie-love-home-for-the-holidays/278245379/?r=111', 
-    'url_font': 'https://pornone.com/natasha-nice-porn-videos-10468/1/', 
-    'thumbnail': 'https://th-eu4.pornone.com/t/79/278245379/b111.jpg'}, 
-...
+```py
+
+In [5]: vd = pn.search_porn('natasha nice',page_limit=2)
+[20:01:30 07/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/1/ 
+[20:01:30 07/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
+[20:01:31 07/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/2/ 
+[20:01:31 07/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
+
+In [6]: vd
+Out[6]: pornone(site_name='pornone', 
+url_base='https://pornone.com', 
+query='natasha+nice', 
+url_search='https://pornone.com/video/natasha+nice',
+ping=2.9700820446014404, 
+videos_per_pages=36, 
+len_pages=2, 
+len_videos=72, 
+videos=[
+    pornone_video(title='Xxxmas Mixxx Up',
+    time='29:41\n', 
+    dur=1781, 
+    stats='\n\n\n6,022\n\n\n\n19h ago\n\n\n\n100%\n\n', 
+    page_number=1, 
+    url='https://pornone.com/taboo/xxxmas-mixxx-up/278239965/', 
+    url_font='https://pornone.com/natasha-nice-porn-videos-10468/1/', 
+    thumbnail='https://th-eu4.pornone.com/t/65/278239965/d3.jpg'),
+    ...
 ```
 
 ### Ukevids
 
 ```py
->>> import dreams.ukevids as uk
 
->>> vds = uk.search_porn('natasha nice',page_limit=4)
+In [8]: import dreams.ukevids as uk
 
-[21:50:41 05/01/2023 (ukevids)]:  finding 20 videos from 1 pages... 
-[21:50:41 05/01/2023 (ukevids)]:  finding 40 videos from 2 pages... 
-[21:50:41 05/01/2023 (ukevids)]:  finding 60 videos from 3 pages... 
-[21:50:42 05/01/2023 (ukevids)]:  finding 80 videos from 4 pages... 
+In [9]: uk.search_porn('natasha nice',page_limit=2)
+[16:24:24 07/01/2023 (ukevids)]:  finding 24 videos from 1 pages... 
+[16:24:24 07/01/2023 (ukevids)]:  finding 48 videos from 2 pages... 
 
+
+Out[9]: ukevids(site_name='ukevids',
+url_base='https://ukdevilz.com', 
+query='natasha+nice', 
+url_search='https://ukdevilz.com/video/natasha+nice',
+ping=1.9254982471466064,
+videos_per_pages=24,
+len_pages=2,
+len_videos=48,
+videos=[
+    ukevids_video(title='Xandra sixx, darcie dolce, natasha nice (sorority initiation) sex porno',
+    time=' 31:58',
+    dur=1918,
+    views=' 122.88K',
+    page_number=1,
+    url_font='https://ukdevilz.com/video/natasha+nice?p=1',
+    url='https://ukdevilz.com/watch/-165193771_456239108',
+    thumbnail='https://sun9-66.userapi.com/c845123/v845123080/699f2/42fyF8MAdjU.jpg',
+    site='ukevids'), 
+    ...
 ```
-```py
->>> vds
-
-{'url_base': 'https://ukdevilz.com', 
-'query': 'natasha+nice',
- 'url_search': 'https://ukdevilz.com/video/natasha+nice', 
- 'ping': 3.231513023376465, 
- 'videos_per_pages': 24, 
- 'len_pages': 4, 
- 'len_videos': 96, 
- 'videos': [{'title': 'Xandra sixx, darcie dolce, natasha nice (sorority initiation) sex porno', 
-    'time': ' 31:58', 
-    'dur': 1918, 
-    'views': ' 122.88K', 
-    'page_number': 1, 
-    'url_font': 'https://ukdevilz.com/video/natasha+nice?p=1', 
-    'url': 'https://ukdevilz.com/watch/-165193771_456239108', 
-    'thumbnail': 'https://sun9-66.userapi.com/c845123/v845123080/699f2/42fyF8MAdjU.jpg'}, 
-....
 ```

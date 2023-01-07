@@ -1,21 +1,23 @@
 
 from bs4 import BeautifulSoup as bs
-import requests as rq
+# import requests as rq
+from collections import namedtuple
 import mechanicalsoup as mec
-import re
-import logging
-import time
+# import re
+# import logging
+# import time
 
-from dreams.settings import puts
+#from dreams.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
 
 
 from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base
+from kitano import puts
 import kitano.logging as lg
 
-site_name = 'spankbang'
+site_name = 'SpankBang'
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
 
 
@@ -81,10 +83,12 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                 'url':url_video,
                 'url_font':url,
                 'thumbnail':url_img_video,
-
                 'preview':gif_url,
+                'site_name':site_name
         }
-        list_video.append(vid)
+        Vid = namedtuple(f'{site_name.lower()}_video',vid)
+        v = Vid(**vid)
+        list_video.append(v)
         #count_video_ = count_video_ + 1
         #print(f'video: {title_video} - {time_video} [{url}]')
     return list_video
@@ -121,6 +125,7 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
     return search_porn_base(query=query,
                             url_base=url_base,
                             page_limit=page_limit,
+                            site_name=site_name,
                             page_number=page_number,
                             call_get_videos_site=get_videos_bg_link,
                             url_base_page_number_search=url_base_search_page)

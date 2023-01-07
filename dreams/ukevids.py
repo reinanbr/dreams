@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup as bs
-import requests as rq
+#import requests as rq
 import mechanicalsoup as mec
-import re
-import time
+from collections import namedtuple
+#import re
+#import time
 
 from dreams.settings import puts
 from requests_html import HTMLSession
@@ -69,9 +70,13 @@ def get_videos_uk_link(url:str,page_number:int) -> list:
                 'url_font':url,
                 'url':url_video,
                 'thumbnail':url_img_video,
+                'site':site_name,
+                'preview':None,
                 # 'gif':gif_url,
         }
-        list_video.append(vid)
+        Vid = namedtuple(f'{site_name.lower()}_video',vid)
+        v = Vid(**vid)
+        list_video.append(v)
 
     return list_video
 
@@ -93,6 +98,7 @@ def url_base_page_number_search(query:str,page:int):
 def search_porn(query:str,page_limit:int=2,page_number=None):
     return search_porn_base(query=query,
                             url_base=url_base,
+                            site_name=site_name,
                             page_limit=page_limit,
                             page_number=page_number,
                             call_get_videos_site=get_videos_uk_link,

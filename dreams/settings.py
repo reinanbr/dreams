@@ -1,7 +1,7 @@
 from collections import namedtuple
 from kitano import puts
 import time
-
+import kitano.logging as lg
 
 
 
@@ -21,10 +21,11 @@ def search_porn_base(query:str,
                      url_base:str,
                      call_get_videos_site,
                      url_base_page_number_search,
+                     site_name:str,
                      page_limit=2,
                      page_number:int=None):
     
-    
+    lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
     query = '+'.join(query.split(' '))
     list_videos = []
 
@@ -64,7 +65,8 @@ def search_porn_base(query:str,
         len_pg = p-1
         len_videos_pages = int(len_videos/len_pg)
 
-    data = {'url_base':url_base,
+    data = {'site_name':site_name,
+            'url_base':url_base,
             'query':query,
             'url_search':f'{url_base}/video/{query}',
             'ping':time_ping_end,
@@ -72,6 +74,9 @@ def search_porn_base(query:str,
             'len_pages':len_pg,
             'len_videos':len_videos,
             'videos':list_videos}
-    return data
+    Data = namedtuple(site_name,data)
+    D = Data(**data)
+    return D
+    
 
 

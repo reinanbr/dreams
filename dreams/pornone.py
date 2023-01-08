@@ -158,6 +158,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                 'stats':stats,
                 'page_number':page_number,
                 'url':url_video,
+                'url_search':loc,
                 'url_font':url,
                 'thumbnail':url_img,
 

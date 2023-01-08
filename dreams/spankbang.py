@@ -46,6 +46,7 @@ br.session.headers.update(headers)
 def get_videos_bg_link(url:str,page_number:int) -> list:
 
     assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
+    loc = url
     url_html = br.get(url)
     url_html = url_html.text
     html_parser = bs(url_html,features="html.parser")
@@ -82,6 +83,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                 'page_number':page_number,
                 'url':url_video,
                 'url_font':url,
+                'url_search':loc,
                 'thumbnail':url_img_video,
                 'preview':gif_url,
                 'site_name':site_name

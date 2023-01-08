@@ -51,6 +51,7 @@ s.cookies = http.cookiejar.MozillaCookieJar("all_cookies.txt")
 def get_videos_bg_link(url:str,page_number:int) -> list:
     #print(url)
     assert (url_base in url), f'[error {site_name}]: it is not a url from {site_name}!'
+    loc = url
     # loc = url
     # seen = []
     # while True:
@@ -111,6 +112,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                     'page_number':page_number,
                     'url':url_video,
                     'url_font':url,
+                    'url_search':loc,
                     'thumbnail':url_img,
 
                     #'gif':gif_url,

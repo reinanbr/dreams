@@ -38,6 +38,7 @@ br.session.headers.update(headers)
 
 def get_videos_uk_link(url:str,page_number:int) -> list:
     assert (url_base in url), '[error ukevids]: it is not a url from ukevids!'
+    loc = url
     url_html = br.get(url)
     url_html = url_html.text
     html_parser = bs(url_html,features="html.parser")
@@ -68,6 +69,7 @@ def get_videos_uk_link(url:str,page_number:int) -> list:
                 'views':views,
                 'page_number':page_number,
                 'url_font':url,
+                'url_search':loc,
                 'url':url_video,
                 'thumbnail':url_img_video,
                 'site':site_name,

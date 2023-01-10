@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as bs
 # import requests as rq
 from collections import namedtuple
 import mechanicalsoup as mec
+from dreams.settings import VideoData
 # import re
 # import logging
 # import time
@@ -76,21 +77,18 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             pass
 
         dur = int(time_video.split(' min')[0])*60
-        vid = {'title':title_video,
-                'time':time_video,
-                'dur':dur,
-                'stats':stats,
-                'page_number':page_number,
-                'url':url_video,
-                'url_font':url,
-                'url_search':loc,
-                'thumbnail':url_img_video,
-                'preview':gif_url,
-                'site_name':site_name
-        }
-        Vid = namedtuple(f'{site_name.lower()}_video',vid)
-        v = Vid(**vid)
-        list_video.append(v)
+
+        Vid = VideoData(title=title_video,
+                        time=time_video,
+                        duration=dur,
+                        stats=stats.replace('\n',' ').replace('\n\n',''),
+                        page_number=page_number,
+                        url=url_video,
+                        url_font=url,
+                        thumbnail=url_img_video,
+                        preview=gif_url,
+                        site_name=site_name)
+        list_video.append(Vid)
         #count_video_ = count_video_ + 1
         #print(f'video: {title_video} - {time_video} [{url}]')
     return list_video

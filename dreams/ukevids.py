@@ -9,7 +9,7 @@ from dreams.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
-from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base
+from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
 import kitano.logging as lg
 
 site_name = 'ukevids'
@@ -61,24 +61,38 @@ def get_videos_uk_link(url:str,page_number:int) -> list:
         url_img_video = video.find('img')['data-src']
         views = video.find('div',{'class':'m_views'}).text
         min,seg = time_video.split(':')[0],time_video.split(':')[1]
-        dur = (int(min)*60)+int(seg)
+        try:
+            dur = (int(min)*60)+int(seg)
+        except Exception as e:
+            dur = None
+            puts(f'error Exception: {e}')
+            pass
+        # vid = {'title':title_video,
+        #         'time':time_video,
+        #         'dur':dur,
+        #         'views':views,
+        #         'page_number':page_number,
+        #         'url_font':url,
+        #         'url_search':loc,
+        #         'url':url_video,
+        #         'thumbnail':url_img_video,
+        #         'site':site_name,
+        #         'preview':None,
+        #         # 'gif':gif_url,
+        # }
+        # print(vid)
+        Vid = VideoData(title=title_video,
+                            time=time_video,
+                            duration=dur,
+                            page_number=page_number,
+                            url=url_video,
+                            url_font=url,
+                            stats=views,
+                            thumbnail=url_img_video,
+                            site_name=site_name,
+                            preview=None)
 
-        vid = {'title':title_video,
-                'time':time_video,
-                'dur':dur,
-                'views':views,
-                'page_number':page_number,
-                'url_font':url,
-                'url_search':loc,
-                'url':url_video,
-                'thumbnail':url_img_video,
-                'site':site_name,
-                'preview':None,
-                # 'gif':gif_url,
-        }
-        Vid = namedtuple(f'{site_name.lower()}_video',vid)
-        v = Vid(**vid)
-        list_video.append(v)
+        list_video.append(Vid)
 
     return list_video
 

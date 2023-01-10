@@ -62,128 +62,172 @@ getting data
 
 >>> import dreams.spankbang as sp
 
->>> vd = sp.search_porn('natasha nice',page_limit=2)
-[20:07:52 07/01/2023 (SpankBang)]:  finding 98 videos from 1 pages... 
-[20:07:53 07/01/2023 (SpankBang)]:  finding 193 videos from 2 pages... 
+>>> vds = sp.search_porn('joyce oliveira',page_limit=2)
+[23:21:24 09/01/2023 (SpankBang)]:  finding 97 videos from 1 pages of 2 limit pages... 
+[23:21:25 09/01/2023 (SpankBang)]:  finding 196 videos from 2 pages of 2 limit pages... 
 
+
+
+>>> vds
+SpankBang(
+    query=joyce+oliveira, 
+    len_videos=196, 
+    len_pages=2, 
+    videos_per_pages=98, 
+    ping=2.7735655307769775, 
+    url_base=https://spankbang.com, 
+    url_search=https://spankbang.com/s/joyce+oliveira/1/?o=trending), 
+    videos=[
+        spankbang_video(
+            title=Joyce Oliveira full anal,
+            time=45 min,
+            duration=2700,
+            stats= 280K 97% 2 years,
+            page_number=1,
+            url=https://spankbang.com/4py0c/video/joyce+oliveira+full+anal,url_font=https://spankbang.com/s/joyce+oliveira/1/?o=trending,
+            thumbnail=https://tb-lb.sb-cd.com/t/7928940/7/9/w:800/t6-enh/joyce-oliveira-full-anal.jpg,
+            preview=https://tbv.sb-cd.com/t/7928940/7/9/td.mp4), 
+        ...
+```
+getting only one video from it data
+```py
+>>> vd = vds.videos[20]
 
 >>> vd
-SpankBang(site_name='SpankBang',
-url_base='https://spankbang.com', 
-query='natasha+nice', 
-url_search='https://spankbang.com/video/natasha+nice', 
-ping=3.639028787612915, 
-videos_per_pages=96, len_pages=2, 
-len_videos=193, 
-videos=[
-    spankbang_video(title='natasha.nice.and.lumi.ray.cumming.in.for.a.wet.landing', 
-    time='34 min', 
-    dur=2040, 
-    stats='\n13K\n91%\n9 days\n\xa0\n\n', 
-    page_number=1, 
-    url='https://spankbang.com/7mwzt/video/natasha+nice+and+lumi+ray+cumming+in+for+a+wet+landing', 
-    url_font='https://spankbang.com/s/natasha+nice/1/?o=trending', 
-    thumbnail='https://tb-lb.sb-cd.com/t/12826505/1/2/w:800/t6-enh/natasha-nice-and-lumi-ray-cumm.jpg', 
-    preview='https://tbv.sb-cd.com/t/12826505/1/2/td.mp4'),
-    ...
-```
+spankbang_video(
+    title=Joyce Oliveira fudendo com sua Mãe,
+    time=26 min,
+    duration=1560,
+    stats= 190K 98% 4 years,
+    page_number=1,
+    url=https://spankbang.com/2k3ez/video/joyce+oliveira+fudendo+com+sua+m+e,
+    url_font=https://spankbang.com/s/joyce+oliveira/1/?o=trending,
+    thumbnail=https://tb-lb.sb-cd.com/t/4296779/4/2/w:800/t5-enh/joyce-oliveira-fudendo-com-sua.jpg,
+    preview=https://tbv.sb-cd.com/t/4296779/4/2/td.mp4)
 
+>>> type(vd)
+dreams.settings.VideoData
+
+```
 
 ### Pornone
-
-```py
-
->>> import dreams.pornone as pn
-
->>> vd = pn.search_porn('natasha nice mother',page_limit=2)
-[19:55:22 07/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
-[19:55:23 07/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
-
-
->>> vd
-pornone(site_name='pornone',
-url_base='https://pornone.com', 
-query='natasha+nice+mother', 
-url_search='https://pornone.com/video/natasha+nice+mother', 
-ping=2.7822909355163574, 
-videos_per_pages=36, 
-len_pages=2, 
-len_videos=72, 
-videos=[
-    pornone_video(title='Mother Natasha And Her Stepson', 
-    time='31:16\n', 
-    dur=1876, 
-    stats='\n\n\n7,066\n\n\n\n4mo ago\n\n\n\n100%\n\n', 
-    page_number=1, 
-    url='https://pornone.com/cougar/mother-natasha-and-her-stepson/278036723/'
-    url_font='https://pornone.com/search/?q=natasha+nice+mother&sort=relevance&filter=&page=1', 
-    thumbnail='https://th-eu4.pornone.com/t/23/278036723/d73.jpg'),
-    ...
-```
-
 
 if you seach just the name pornstar (saved on site pornone), he return the videos from page pornstar
 
 
 ```py
 
->>> vd = pn.search_porn('natasha nice',page_limit=2)
-[20:01:30 07/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/1/ 
-[20:01:30 07/01/2023 (pornone)]:  finding 36 videos from 1 pages... 
-[20:01:31 07/01/2023 (pornone)]:  is page pornstar from Natasha Nice - https://pornone.com/natasha-nice-porn-videos-10468/2/ 
-[20:01:31 07/01/2023 (pornone)]:  finding 72 videos from 2 pages... 
+>>> import dreams.pornone as pn
+
+>>> vds = pn.search_porn('joyce oliveira',page_limit=2)
+[23:06:45 09/01/2023 (pornone)]:  is page pornstar from Joyce Oliveira - https://pornone.com/joyce-oliveira-porn-videos-935/1/ 
+[23:06:45 09/01/2023 (pornone)]:  finding 36 videos from 1 pages of 2 limit pages... 
+[23:06:46 09/01/2023 (pornone)]:  is page pornstar from Joyce Oliveira - https://pornone.com/joyce-oliveira-porn-videos-935/2/ 
+[23:06:46 09/01/2023 (pornone)]:  finding 72 videos from 2 pages of 2 limit pages... 
+
+
+
+>>>> type(vds)
+dreams.settings.DataVideos
+
+>>> vds
+pornone(query=joyce+oliveira, 
+len_videos=72, 
+len_pages=2, 
+videos_per_pages=36, 
+ping=2.7089011669158936, 
+url_base=https://pornone.com, 
+url_search=https://pornone.com/joyce-oliveira-porn-videos-935/1/), 
+videos=[
+    pornone_video(
+        title=Big Bubble Butt Brazilian Orgy, 
+        time=19:44, 
+        duration=1184, 
+        stats=   117    1wk ago      ,
+        page_number=1, 
+        url=https://pornone.com/swimsuit/big-bubble-butt-brazilian-orgy/278238363/?r=3, 
+        url_font=https://pornone.com/joyce-oliveira-porn-videos-935/1/, 
+        thumbnail=https://th-eu4.pornone.com/t/63/278238363/d3.jpg, 
+        preview=None), 
+    ...
+```
+getting only video from it data
+```py
+
+>>> vd = vds.videos[20]
 
 >>> vd
-pornone(site_name='pornone', 
-url_base='https://pornone.com', 
-query='natasha+nice', 
-url_search='https://pornone.com/video/natasha+nice',
-ping=2.9700820446014404, 
-videos_per_pages=36, 
-len_pages=2, 
-len_videos=72, 
-videos=[
-    pornone_video(title='Xxxmas Mixxx Up',
-    time='29:41\n', 
-    dur=1781, 
-    stats='\n\n\n6,022\n\n\n\n19h ago\n\n\n\n100%\n\n', 
+pornone_video(
+    title=Taboo Brazil #2, 
+    time=03:04:23, 
+    duration=184, 
+    stats=   42,163    21mo ago    97%  , 
     page_number=1, 
-    url='https://pornone.com/taboo/xxxmas-mixxx-up/278239965/', 
-    url_font='https://pornone.com/natasha-nice-porn-videos-10468/1/', 
-    thumbnail='https://th-eu4.pornone.com/t/65/278239965/d3.jpg'),
-    ...
+    url=https://pornone.com/taboo/taboo-brazil/277503033/, 
+    url_font=https://pornone.com/joyce-oliveira-porn-videos-935/1/, 
+    thumbnail=https://th-eu4.pornone.com/t/33/277503033/d3.jpg, 
+    preview=None)
+
+>>> type(vd)
+dreams.settings.VideoData
 ```
 
 ### Ukevids
 
 ```py
-
 >>> import dreams.ukevids as uk
 
->>> vd = uk.search_porn('natasha nice',page_limit=2)
-[16:24:24 07/01/2023 (ukevids)]:  finding 24 videos from 1 pages... 
-[16:24:24 07/01/2023 (ukevids)]:  finding 48 videos from 2 pages... 
+>>> vds = uk.search_porn('joyce oliveira',page_limit=2)
+[22:49:35 09/01/2023 (ukevids)]:  finding 8 videos from 1 pages of 2 limit pages... 
+[22:49:36 09/01/2023 (ukevids)]:  error Exception: invalid literal for int() with base 10: ' 2 days, 11' 
+[22:49:36 09/01/2023 (ukevids)]:  finding 28 videos from 2 pages of 2 limit pages... 
 
+
+
+>>> type(vds)
+dreams.settings.DataVideos
+
+>>> vds
+ukevids(query=joyce+oliveira,
+len_videos=28,
+len_pages=2,
+videos_per_pages=14,
+ping=0.7920231819152832,
+url_base=https://ukdevilz.com,
+url_search=https://ukdevilz.com/video/joyce+oliveira?p=1),
+videos=[
+    ukevids_video(
+        title=Joyce oliveira i am wearing no panties (big wet butts), 
+        time= 35:26,
+        duration=2126, 
+        stats= 624, 
+        page_number=1, 
+        url=https://ukdevilz.com/watch/94112237_158975131, 
+        url_font=https://ukdevilz.com/video/joyce+oliveira?p=1,
+         thumbnail=https://sun9-87.userapi.com/c12491/u33879252/video/l_8374bd19.jpg,
+         preview=None),
+    ...
+```
+
+getting only video from it data:
+```py
+>>> vd = vds.videos[20]
 
 >>> vd
-ukevids(site_name='ukevids',
-url_base='https://ukdevilz.com', 
-query='natasha+nice', 
-url_search='https://ukdevilz.com/video/natasha+nice',
-ping=1.9254982471466064,
-videos_per_pages=24,
-len_pages=2,
-len_videos=48,
-videos=[
-    ukevids_video(title='Xandra sixx, darcie dolce, natasha nice (sorority initiation) sex porno',
-    time=' 31:58',
-    dur=1918,
-    views=' 122.88K',
-    page_number=1,
-    url_font='https://ukdevilz.com/video/natasha+nice?p=1',
-    url='https://ukdevilz.com/watch/-165193771_456239108',
-    thumbnail='https://sun9-66.userapi.com/c845123/v845123080/699f2/42fyF8MAdjU.jpg',
-    site='ukevids'), 
-    ...
+ukevids_video(
+    title=Sissy brainwashing,
+    time= 11:41, 
+    duration=701, 
+    stats= 6.57K, 
+    page_number=2, 
+    url=https://ukdevilz.com/watch/-127636532_456241846, 
+    url_font=https://ukdevilz.com/video/joyce+oliveira?p=2,
+    thumbnail=https://sun9-68.userapi.com/impf/c846019/v846019732/77367/14I1GmrLsPs.jpg?size=800x450&quality=96&keep_aspect_ratio=1&background=000000&sign=73c5e51d7a6f52bcb9075f454f724bad&c_uniq_tag=Dp82kMhnAVqhJ0il5d-A8BiVUDlgo8H8n856ijOpFEM&type=video_thumb,
+    preview=None)
+
+>>> type(vd)
+dreams.settings.VideoData
+
+
 ```
 ```

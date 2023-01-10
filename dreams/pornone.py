@@ -14,7 +14,7 @@ import re
 
 
 
-from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base
+from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
 import kitano.logging as lg
 
 site_name = 'pornone'
@@ -105,21 +105,18 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             min,seg = time_video.split(':')[0],time_video.split(':')[1]
             dur = (int(min)*60)+int(seg)
 
-            vid = {'title':title_video,
-                    'time':time_video,
-                    'dur':dur,
-                    'stats':stats,
-                    'page_number':page_number,
-                    'url':url_video,
-                    'url_font':url,
-                    'url_search':loc,
-                    'thumbnail':url_img,
+            Vid = VideoData(title=title_video,
+                            time=time_video.replace('\n',''),
+                            duration=dur,
+                            page_number=page_number,
+                            url=url_video,
+                            url_font=url,
+                            stats=stats.replace('\n',' ').replace('\n\n',' ').replace('\n\n\n',' '),
+                            thumbnail=url_img,
+                            site_name=site_name,
+                            preview=None)
 
-                    #'gif':gif_url,
-            }
-            Vid = namedtuple(site_name,vid)
-            v = Vid(**vid)
-            list_video.append(v)
+            list_video.append(Vid)
         return list_video
 
 
@@ -152,21 +149,18 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
         min,seg = time_video.split(':')[0],time_video.split(':')[1]
         dur = (int(min)*60)+int(seg)
 
-        vid = {'title':title_video,
-                'time':time_video,
-                'dur':dur,
-                'stats':stats,
-                'page_number':page_number,
-                'url':url_video,
-                'url_search':loc,
-                'url_font':url,
-                'thumbnail':url_img,
+        Vid = VideoData(title=title_video,
+                            time=time_video.replace('\n',''),
+                            duration=dur,
+                            page_number=page_number,
+                            url=url_video,
+                            stats=stats.replace('\n',' ').replace('\n\n',' ').replace('\n\n\n',' '),
+                            url_font=url,
+                            thumbnail=url_img,
+                            site_name=site_name,
+                            preview=None)
 
-                #'gif':gif_url,
-        }
-        Vid = namedtuple(site_name,vid)
-        v = Vid(**vid)
-        list_video.append(v)
+        list_video.append(Vid)
        return list_video
 
 

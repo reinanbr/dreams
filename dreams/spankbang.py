@@ -149,10 +149,11 @@ def get_video_embed(url):
     time = html_parser.find('span',{'class':'i-length'}).text
     players = html_parser.find('span',{'class':'i-plays'}).text
     time_published = html_parser.find('span',{'class':'i-date'}).text #.find('section',{'class':'details'}).find('p').text
+    image_thumbnail = html_parser.find('img',{'class':'player_thumb'})['src']
 
     video = html_parser.find('video')
     link = video.find('source')['src']#.split('?')[0]
-    videos_sugestions = html_parser.find('div',{'class':'video-rotate'})
+    #videos_sugestions = html_parser.find('div',{'class':'video-rotate'})
     indice_sugestions = 1
     list_video_sugestions = []
     for video_sugestion in html_parser.find_all('div',{'class':'video-item'}):
@@ -192,6 +193,8 @@ def get_video_embed(url):
                       url=link,
                       title=title,
                       time=time,
+                      thumbnail=image_thumbnail,
                       time_published=time_published,
+                      views=players,
                       len_videos_sugestions=indice_sugestions-1,
                       videos_sugestions=list_video_sugestions)

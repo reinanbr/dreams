@@ -19,7 +19,6 @@ def throw_error(arg:bool)->None:
 @dataclass
 class DataVideos:
     site_name:str
-
     url_base:str
     query:str
     ping:float
@@ -48,7 +47,21 @@ class VideoData:
     indice:int
 
     def __repr__(self) -> str:
-        return f'{self.site_name.lower()}_video(indice={self.indice}, site_name={self.site_name}title={self.title},time={self.time},duration={self.duration},stats={self.stats},page_number={self.page_number},url={self.url},url_font={self.url_font},thumbnail={self.thumbnail},preview={self.preview})'
+        return f'{self.site_name.lower()}_video(indice={self.indice}, site_name={self.site_name}, title={self.title}, time={self.time}, duration={self.duration}, stats={self.stats},page_number={self.page_number}, url={self.url},url_font={self.url_font}, thumbnail={self.thumbnail}, preview={self.preview})'
+
+
+@dataclass
+class EmbedVideo:
+    url:str
+    title:str
+    time:str
+    time_published:str
+    site_name:str
+    len_videos_sugestions:int
+    videos_sugestions:list
+    
+    def __repr__(self) -> str:
+        return f'EmbedVideo{self.site_name}(title={self.title}, time={self.time}, url={self.url}, time_published={self.time_published},len_videos_sugestions={self.len_videos_sugestions} , videos_sugestions={self.videos_sugestions})'
 
 
 

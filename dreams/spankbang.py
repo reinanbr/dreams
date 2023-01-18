@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as bs
 # import requests as rq
 from collections import namedtuple
 import mechanicalsoup as mec
-from dreams.settings import VideoData
+from dreams.settings import VideoData,EmbedVideo
 # import re
 # import logging
 # import time
@@ -139,12 +139,59 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
 
 
 
+
 def get_video_embed(url):
-    res = asession.get(url)
+    res = br.get(url)
     #print(res.text)
     html_parser = bs(res.text,features="html.parser")
+    #print(html_parser)
+    title =  html_parser.find('h1').text
+    time = html_parser.find('span',{'class':'i-length'}).text
+    players = html_parser.find('span',{'class':'i-plays'}).text
+    time_published = html_parser.find('span',{'class':'i-date'}).text #.find('section',{'class':'details'}).find('p').text
 
     video = html_parser.find('video')
     link = video.find('source')['src']#.split('?')[0]
+    videos_sugestions = html_parser.find('div',{'class':'video-rotate'})
+    indice_sugestions = 1
+    list_video_sugestions = []
+    for video_sugestion in html_parser.find_all('div',{'class':'video-item'}):
+        url_video = f"{url_base}{video_sugestion.find('a')['href']}"
+        title_video = video_sugestion.find('img')['alt']
+        time_video = video_sugestion.find('span',{'class':'l'}).text
+        url_img_video = video_sugestion.find('img')['data-src']
+        try:
+            stats = video_sugestion.find('div',{'class':'stats'}).text#[span.text for span in video_sugestion.find_all('span')]
+            stats=stats.replace('\n',' ').replace('\n\n',''),
+        except:
+            stats = None
+        #print(stats)
+        try:
+            gif_url = video_sugestion.find('img')['data-preview']
+        except:
+            gif_url = None
+            pass
+
+        dur = int(time_video.split('m')[0])*60
+
+        Vid = VideoData(title=title_video,
+                        time=time_video,
+                        duration=dur,
+                        stats=stats,
+                        page_number=None,
+                        url=url_video,
+                        url_font=url,
+                        thumbnail=url_img_video,
+                        preview=gif_url,
+                        site_name=site_name,
+                        indice=indice_sugestions)
+        list_video_sugestions.append(Vid)
+        indice_sugestions = indice_sugestions+1
     
-    return link
+    return EmbedVideo(site_name=site_name,
+                      url=link,
+                      title=title,
+                      time=time,
+                      time_published=time_published,
+                      len_videos_sugestions=indice_sugestions-1,
+                      videos_sugestions=list_video_sugestions)

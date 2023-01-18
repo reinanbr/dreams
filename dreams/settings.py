@@ -19,6 +19,7 @@ def throw_error(arg:bool)->None:
 @dataclass
 class DataVideos:
     site_name:str
+
     url_base:str
     query:str
     ping:float
@@ -44,9 +45,10 @@ class VideoData:
     thumbnail:str
     preview:str
     site_name:str
+    indice:int
 
     def __repr__(self) -> str:
-        return f'{self.site_name.lower()}_video(title={self.title},time={self.time},duration={self.duration},stats={self.stats},page_number={self.page_number},url={self.url},url_font={self.url_font},thumbnail={self.thumbnail},preview={self.preview})'
+        return f'{self.site_name.lower()}_video(indice={self.indice}, site_name={self.site_name}title={self.title},time={self.time},duration={self.duration},stats={self.stats},page_number={self.page_number},url={self.url},url_font={self.url_font},thumbnail={self.thumbnail},preview={self.preview})'
 
 
 

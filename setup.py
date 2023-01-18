@@ -5,13 +5,10 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(name='dreams',
-    version='0.1.3',
+    version='0.1.5',
     url='https://github.com/reinanbr/dreams',
     license='BSD v3',
     author='Reinan Br',
-    #entry_points = {
-    #    'console_scripts': ['getmusic=tubemp3.get_music_line:main'],
-    #},
     long_description=readme,
     long_description_content_type="text/markdown",
     author_email='slimchatuba@gmail.com',

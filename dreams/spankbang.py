@@ -63,6 +63,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             raise Exception('[error spankbang]: dont find any videos here page!')
 
     list_video = []
+    indice = 1
     for video in video_div:
         url_video = f"{url_base}{video.find('a')['href']}"
         title_video = video.find('img')['alt']
@@ -87,8 +88,10 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                         url_font=url,
                         thumbnail=url_img_video,
                         preview=gif_url,
-                        site_name=site_name)
+                        site_name=site_name,
+                        indice=indice)
         list_video.append(Vid)
+        indice = indice+1
         #count_video_ = count_video_ + 1
         #print(f'video: {title_video} - {time_video} [{url}]')
     return list_video
@@ -136,12 +139,12 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
 
 
 
-def get_video_embed(video):
-    res = asession.get(video['url'])
+def get_video_embed(url):
+    res = asession.get(url)
     #print(res.text)
     html_parser = bs(res.text,features="html.parser")
 
     video = html_parser.find('video')
-    link = video.find('source')['src']
+    link = video.find('source')['src']#.split('?')[0]
     
     return link

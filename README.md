@@ -51,7 +51,7 @@ On the present moment (jan 5 20:49, 2023), I added the follow work's:
 
 
 <br>
-if you want help it free project, <a href="https://github.com/reinanbr/dreams" alt="github dreams">come on</a>.
+if you want help it free project, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me</a>.
 
 ## getting videos data
 

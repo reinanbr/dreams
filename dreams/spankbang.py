@@ -163,7 +163,7 @@ def get_video_embed(url):
         url_img_video = video_sugestion.find('img')['data-src']
         try:
             stats = video_sugestion.find('div',{'class':'stats'}).text#[span.text for span in video_sugestion.find_all('span')]
-            stats=stats.replace('\n',' ').replace('\n\n',''),
+            stats=stats.replace('\n',' ').replace('\n\n','').replace('(','').replace(')','').replace("'",'').replace('\xa0','').replace(',','')
         except:
             stats = None
         #print(stats)

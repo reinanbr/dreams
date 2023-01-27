@@ -22,5 +22,5 @@ from dreams.sites import spankbang,ukdelviz,pornone,tnaflix
 all = [ukdelviz,spankbang,pornone,tnaflix]
 
 
-__version__ = '0.1.8'
+__version__ = '0.1.8.5'
 __author__ = 'ReinanBr <slimchatuba@gmail.com>'

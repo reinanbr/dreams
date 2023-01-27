@@ -1,8 +1,12 @@
-from dreams import ukdelviz as uk
+from dreams import ukdelviz as uk, __version__
+print(__version__)
 
 
 def test_search_porn():
-    vds = uk.search_porn('lorena aquino').videos
+    vds = uk.search_porn('lorena aquino')
+    print(vds,'\n')
+    vds = vds.videos
 
-    for vd in vds:
-        print(vd,'\n')
+
+
+test_search_porn()

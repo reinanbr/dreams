@@ -5,17 +5,16 @@
 <h1>Dreams</h1>
 
 <p> a beautiful lib, for getting educative video's 🍑 (video's porn)</p>
+<a href='#'><img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/reinanbr/dreams?logo=codefactor">
+</a><img alt="CircleCI" src="https://img.shields.io/circleci/build/github/reinanbr/dreams">
+<img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability-percentage/reinanbr/dreams">
+
+<br/>
 <a href='https://pypi.org/project/dreams/'><img src='https://img.shields.io/pypi/v/dreams'></a>
 <a href='#'><img src='https://img.shields.io/pypi/wheel/dreams'></a>
 <a href='#'><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/dreams"></a>
+<br/>
 <img alt="PyPI - License" src="https://img.shields.io/pypi/l/dreams?color=orange">
-
-<a href='#'><img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/reinanbr/dreams?logo=codefactor">
-</a>
-
-
-<img src='https://img.shields.io/badge/system-linux%20%7C%20deb-brightgreen'>
-
 <img alt="GitHub Pipenv locked Python version" src="https://img.shields.io/github/pipenv/locked/python-version/reinanbr/dreams">
 
 

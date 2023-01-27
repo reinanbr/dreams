@@ -11,7 +11,6 @@
 
 <br/>
 <a href='https://pypi.org/project/dreams/'><img src='https://img.shields.io/pypi/v/dreams'></a>
-<a href='#'><img src='https://img.shields.io/pypi/wheel/dreams'></a>
 <a href='#'><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/dreams"></a>
 <br/>
 <img alt="PyPI - License" src="https://img.shields.io/pypi/l/dreams?color=orange">

@@ -52,6 +52,7 @@ def get_videos_tn_link_search(url:str,page_number:int) ->list:
     list_video_li = video_ul.find_all('li')
     #print(len(list_video_li))
     videos_list = []
+    i = 0
     for video in list_video_li:
         #print(video)
         vd_data = video.find('a')
@@ -83,9 +84,10 @@ def get_videos_tn_link_search(url:str,page_number:int) ->list:
             stats=None,
             date_upload=date_upload,
             page_number=page_number,
-            site_name=site_name
+            site_name=site_name,
+            indice=i
         ))
-        
+        i = i+1
     return videos_list
 
 

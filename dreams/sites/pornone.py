@@ -94,6 +94,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
 
         
         videos = heaven.find_all('a',{'class':'relative'})
+        i = 0
         for vd in videos:
             title_video = vd.find('div',{'class':'leading-[22px]'}).text
             time_video = vd.find('span',{'class':'text-f13'}).text
@@ -114,7 +115,9 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                             stats=stats.replace('\n',' ').replace('\n\n',' ').replace('\n\n\n',' '),
                             thumbnail=url_img,
                             site_name=site_name,
+                            indice=i,
                             preview=None)
+            i = i+1
 
             list_video.append(Vid)
         return list_video
@@ -138,6 +141,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
 
        videos = heaven.find_all('a',{'class':'relative'})
        #print(len(videos))
+       i= 0
        for vd in videos:
         title_video = vd.find('div',{'class':'leading-[22px]'}).text
         time_video = vd.find('span',{'class':'text-f13'}).text
@@ -158,8 +162,9 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
                             url_font=url,
                             thumbnail=url_img,
                             site_name=site_name,
+                            indice=i,
                             preview=None)
-
+        i = i+1
         list_video.append(Vid)
        return list_video
 

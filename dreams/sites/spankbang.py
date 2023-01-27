@@ -63,7 +63,7 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             raise Exception('[error spankbang]: dont find any videos here page!')
 
     list_video = []
-    indice = 1
+    indice = 0
     for video in video_div:
         url_video = f"{url_base}{video.find('a')['href']}"
         title_video = video.find('img')['alt']
@@ -151,7 +151,7 @@ def get_video_embed(url)->EmbedVideo:
 
     video = html_parser.find('video')
     link = video.find('source')['src']#.split('?')[0]
-    indice_sugestions = 1
+    indice_sugestions = 0
     list_video_sugestions = []
     for video_sugestion in html_parser.find_all('div',{'class':'video-item'}):
         url_video = f"{url_base}{video_sugestion.find('a')['href']}"

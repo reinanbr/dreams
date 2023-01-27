@@ -1,6 +1,6 @@
-0.1.8.5.8
-[14:41:41 27/01/2023 (SpankBang)]:  finding 97 videos from 1 pages of 2 limit pages... 
-[14:41:42 27/01/2023 (SpankBang)]:  finding 196 videos from 2 pages of 2 limit pages... 
+0.1.8.6
+[16:06:35 27/01/2023 (SpankBang)]:  finding 97 videos from 1 pages of 2 limit pages... 
+[16:06:37 27/01/2023 (SpankBang)]:  finding 196 videos from 2 pages of 2 limit pages... 
 
 
 
@@ -9,7 +9,7 @@ SpankBang(
     len_videos=196, 
     len_pages=2, 
     videos_per_pages=98, 
-    ping=3.9638679027557373, 
+    ping=3.9689297676086426, 
     url_base="https://spankbang.com", 
     url_search="https://spankbang.com/s/lorena+aquino/1/?o=trending", 
     videos=[
@@ -363,18 +363,6 @@ SpankBang(
             indice=29), 
         spankbang_video(
             site_name="SpankBang", 
-            title="Lorena Aquino deliciosa", 
-            time="5 min", 
-            page_number=1, 
-            url="https://spankbang.com/6k3l6/video/lorena+aquino+deliciosa", 
-            url_font="https://spankbang.com/s/lorena+aquino/1/?o=trending", 
-            thumbnail="https://tbi.sb-cd.com/t/11015466/1/1/w:800/t6-enh/lorena-aquino-deliciosa.jpg",
-            stats=" 7.7K 96% 11 months    ",
-            duration=300,
-            preview="https://tbv.sb-cd.com/t/11015466/1/1/td.mp4",
-            indice=30), 
-        spankbang_video(
-            site_name="SpankBang", 
             title="MONICA MATTOS e lorena aquino x gringo branco", 
             time="9 min", 
             page_number=1, 
@@ -384,6 +372,18 @@ SpankBang(
             stats=" 38K 96% 3 years    ",
             duration=540,
             preview="https://tbv.sb-cd.com/t/6190898/6/1/td.mp4",
+            indice=30), 
+        spankbang_video(
+            site_name="SpankBang", 
+            title="Lorena Aquino deliciosa", 
+            time="5 min", 
+            page_number=1, 
+            url="https://spankbang.com/6k3l6/video/lorena+aquino+deliciosa", 
+            url_font="https://spankbang.com/s/lorena+aquino/1/?o=trending", 
+            thumbnail="https://tbi.sb-cd.com/t/11015466/1/1/w:800/t6-enh/lorena-aquino-deliciosa.jpg",
+            stats=" 7.7K 96% 11 months    ",
+            duration=300,
+            preview="https://tbv.sb-cd.com/t/11015466/1/1/td.mp4",
             indice=31), 
         spankbang_video(
             site_name="SpankBang", 

@@ -140,11 +140,9 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
 
 
 
-def get_video_embed(url):
+def get_video_embed(url)->EmbedVideo:
     res = br.get(url)
-    #print(res.text)
     html_parser = bs(res.text,features="html.parser")
-    #print(html_parser)
     title =  html_parser.find('h1').text
     time = html_parser.find('span',{'class':'i-length'}).text
     players = html_parser.find('span',{'class':'i-plays'}).text
@@ -153,7 +151,6 @@ def get_video_embed(url):
 
     video = html_parser.find('video')
     link = video.find('source')['src']#.split('?')[0]
-    #videos_sugestions = html_parser.find('div',{'class':'video-rotate'})
     indice_sugestions = 1
     list_video_sugestions = []
     for video_sugestion in html_parser.find_all('div',{'class':'video-item'}):
@@ -166,13 +163,7 @@ def get_video_embed(url):
             stats=stats.replace('\n',' ').replace('\n\n','').replace('(','').replace(')','').replace("'",'').replace('\xa0','').replace(',','')
         except:
             stats = None
-        #print(stats)
-        try:
-            gif_url = video_sugestion.find('img')['data-preview']
-        except:
-            gif_url = None
-            pass
-
+        gif_url = video_sugestion.find('img').get('data-preview', None)
         dur = int(time_video.split('m')[0])*60
 
         Vid = VideoData(title=title_video,

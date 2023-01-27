@@ -9,7 +9,7 @@ from dreams.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
-from dreams.settings import argument_bool_throw_error_find_videos,DataVideos, search_porn_base,VideoData
+from dreams.settings import argument_bool_throw_error_find_videos, EmbedVideo,DataVideos, search_porn_base,VideoData
 import kitano.logging as lg
 
 site_name = 'tnaflix'
@@ -107,3 +107,70 @@ def search_porn(query:str,page_limit:int=2,page_number:int=None)->DataVideos:
                             page_number=page_number,
                             call_get_videos_site=get_videos_tn_link_search,
                             url_base_page_number_search=url_base_search_page)
+
+
+
+
+
+
+def get_video_embed(url:str)->EmbedVideo:
+    res = asession.get(url)
+    res_br = br.get(url)
+    html_parser = bs(res.text,features="html.parser")
+    html_parser_br = bs(res_br.text,features='html.parser')
+    #print(html_parser)
+    title = html_parser.find('h1').text
+    thumbnail = html_parser.find('img',{'class':'pVideoPreview'})['src']
+    link = html_parser_br.find('video')['src']
+    views = html_parser.find('div',{'class':'nWatchCount'}).text
+    likes = html_parser_br.find('span',{'class':'text_like'}).text
+    tags = html_parser.find('div',{'class':'_video_info'}).text
+    
+    videos_sugestions = html_parser.find('ul',{'class':'thumbsList'}).find_all('li')
+    videos_sugestions_list = []
+    i = 0
+    for video in videos_sugestions:
+        vd_data = video.find('a')
+        
+        video_url = f"{url_base}{vd_data['href']}"
+        video_title = video['data-name'] #vd_data.text
+        video_time = vd_data.find('div',{'class':'videoDuration'}).text
+        thumbnail = vd_data.find('img')['data-original']
+        rating = vd_data.find('div',{'class':'ratingSp'}).text if vd_data.find('div',{'class':'ratingSp'}) else None
+        preview = video['data-trailer']
+        dur = int(video['data-time'])
+        views = video['data-vn']
+        date_upload = int(video['data-date'])
+        
+        year_upload = ((time.time() - date_upload)/60/60/24/365)
+        date_upload = f"{year_upload:.1f} year's ago"
+        date_upload = f"{(12*year_upload):.1f} month's ago" if year_upload<1 else date_upload
+        
+        videos_sugestions_list.append(VideoData(
+            url=video_url,
+            title=video_title,
+            time=video_time,
+            thumbnail=thumbnail,
+            rating=rating,
+            preview=preview,
+            duration_seconds=dur,
+            duration=dur,
+            url_font=res.url,
+            views=views,
+            stats=None,
+            date_upload=date_upload,
+            page_number=0,
+            site_name=site_name,
+            indice=i
+        ))
+        i = i+1
+    
+    return EmbedVideo(site_name=site_name,
+                      url=link,
+                      title=title,
+                      time=None,
+                      thumbnail=thumbnail,
+                      time_published=None,
+                      views=views,
+                      len_videos_sugestions=i-1,
+                      videos_sugestions=videos_sugestions_list)

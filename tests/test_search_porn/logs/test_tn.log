@@ -1,6 +1,6 @@
-0.1.8.5.8
-[14:41:59 27/01/2023 (tnaflix)]:  finding 60 videos from 1 pages of 2 limit pages... 
-[14:42:00 27/01/2023 (tnaflix)]:  finding 120 videos from 2 pages of 2 limit pages... 
+0.1.8.6
+[16:06:54 27/01/2023 (tnaflix)]:  finding 60 videos from 1 pages of 2 limit pages... 
+[16:06:55 27/01/2023 (tnaflix)]:  finding 120 videos from 2 pages of 2 limit pages... 
 
 
 
@@ -9,7 +9,7 @@ tnaflix(
     len_videos=120, 
     len_pages=2, 
     videos_per_pages=60, 
-    ping=4.299774408340454, 
+    ping=3.927093744277954, 
     url_base="https://tnaflix.com", 
     url_search="https://www.tnaflix.com/search.php?tab=videos&what=lorena+aquino&category=&sb=relevance&su=anytime&sd=all&dir=desc&page=1", 
     videos=[

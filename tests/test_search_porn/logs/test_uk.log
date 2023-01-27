@@ -1,6 +1,6 @@
-0.1.8.5.8
-[14:41:52 27/01/2023 (ukdelvis)]:  finding 24 videos from 1 pages of 2 limit pages... 
-[14:41:53 27/01/2023 (ukdelvis)]:  finding 30 videos from 2 pages of 2 limit pages... 
+0.1.8.6
+[16:06:48 27/01/2023 (ukdelvis)]:  finding 24 videos from 1 pages of 2 limit pages... 
+[16:06:48 27/01/2023 (ukdelvis)]:  finding 30 videos from 2 pages of 2 limit pages... 
 
 
 
@@ -9,7 +9,7 @@ ukdelvis(
     len_videos=30, 
     len_pages=2, 
     videos_per_pages=15, 
-    ping=1.9632525444030762, 
+    ping=3.498434543609619, 
     url_base="https://ukdevilz.com", 
     url_search="https://ukdevilz.com/video/lorena+aquino?p=1", 
     videos=[

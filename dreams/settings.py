@@ -65,7 +65,7 @@ class VideoData:
         indice = f',\n            indice={self.indice}' if not self.indice==None else ''
         views = f',\n            views="{self.views}"' if self.views else ''
         rating = f',\n            rating="{self.rating}"' if self.rating else ''
-        date_upload = f',\n            date_upload="{self.date_upload}",' if self.date_upload else ''
+        date_upload = f',\n            date_upload="{self.date_upload}"' if self.date_upload else ''
         duration = f',\n            duration={self.duration}' if self.duration else ''
 
         return f'''
@@ -92,7 +92,16 @@ class EmbedVideo:
     videos_sugestions:list
 
     def __repr__(self) -> str:
-        return f'EmbedVideo{self.site_name}(title={self.title}, time={self.time}, url={self.url}, thumbnail={self.thumbnail}, views={self.views}, time_published={self.time_published}, len_videos_sugestions={self.len_videos_sugestions}, videos_sugestions={self.videos_sugestions})'
+        return f'''
+    EmbedVideo{self.site_name}(
+        title={self.title}, 
+        time={self.time}, 
+        url={self.url}, 
+        thumbnail={self.thumbnail}, 
+        views={self.views}, 
+        time_published={self.time_published}, 
+        len_videos_sugestions={self.len_videos_sugestions}, 
+        videos_sugestions={self.videos_sugestions})'''
 
 
 

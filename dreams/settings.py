@@ -29,7 +29,16 @@ class DataVideos:
     url_search:str
 
     def __repr__(self) -> str:
-        return f'{self.site_name}(query={self.query}, len_videos={self.len_videos}, len_pages={self.len_pages}, videos_per_pages={self.videos_per_pages}, ping={self.ping}, url_base={self.url_base}, url_search={self.url_search}, videos={self.videos})'
+        return f'''
+{self.site_name}(
+    query="{self.query}", 
+    len_videos={self.len_videos}, 
+    len_pages={self.len_pages}, 
+    videos_per_pages={self.videos_per_pages}, 
+    ping={self.ping}, 
+    url_base="{self.url_base}", 
+    url_search="{self.url_search}", 
+    videos={self.videos})'''
 
 # organization data video, based on SpankBank response video, because is the more complete
 @dataclass
@@ -51,15 +60,23 @@ class VideoData:
     duration_seconds:int=None
 
     def __repr__(self) -> str:
-        stats = f', stats={self.stats}' if self.stats else ''
-        preview = f', preview={self.preview}' if self.preview else ''
-        indice = f', indice={self.indice}' if not self.indice==None else ''
-        views = f', views={self.views}' if self.views else ''
-        rating = f', rating={self.rating}' if self.rating else ''
-        date_upload = f', date_upload={self.date_upload}' if self.date_upload else ''
-        duration = f', duration={self.duration}' if self.duration else ''
+        stats = f',\n            stats="{self.stats}"' if self.stats else ''
+        preview = f',\n            preview="{self.preview}"' if self.preview else ''
+        indice = f',\n            indice={self.indice}' if not self.indice==None else ''
+        views = f',\n            views="{self.views}"' if self.views else ''
+        rating = f',\n            rating="{self.rating}"' if self.rating else ''
+        date_upload = f',\n            date_upload="{self.date_upload}",' if self.date_upload else ''
+        duration = f',\n            duration={self.duration}' if self.duration else ''
 
-        return f'''{self.site_name.lower()}_video(site_name={self.site_name}, title={self.title}, time={self.time}, page_number={self.page_number}, url={self.url}, url_font={self.url_font}, thumbnail={self.thumbnail}{stats}{views}{rating}{date_upload}{duration}{preview}{indice})'''
+        return f'''
+        {self.site_name.lower()}_video(
+            site_name="{self.site_name}", 
+            title="{self.title}", 
+            time="{self.time}", 
+            page_number={self.page_number}, 
+            url="{self.url}", 
+            url_font="{self.url_font}", 
+            thumbnail="{self.thumbnail}"{stats}{views}{rating}{date_upload}{duration}{preview}{indice})'''
 
 
 @dataclass

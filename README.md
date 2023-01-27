@@ -41,7 +41,7 @@ On the present moment (jan 5 20:49, 2023), I added the follow work's:
 |spankbang     |         ✅ |    ✅   |        ✅       |                ✅          |         98       |
 |noodlemagazine|            |         |                 |                            |                  |
 |ukdelviz      |  ✅        |     x   |        ✅       |                            |         15       |
-|tnaflix       |     ✅     |    ✅   |                 |                            |         60       |
+|tnaflix       |     ✅     |    ✅   |        ✅        |             ✅            |         60       |
 |playvids      |            |         |                 |                            |                  |
 |xvideos       |            |         |                 |                            |                  |
 |pornhub       |            |         |                 |                            |                  |

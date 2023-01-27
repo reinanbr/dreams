@@ -42,7 +42,7 @@ On the present moment (jan 5 20:49, 2023), I added the follow work's:
 |pornone       |         ✅ |     x   |        ✅       |                            |
 |spankbang     |         ✅ |    ✅   |        ✅       |                            |
 |noodlemagazine|            |         |                 |                            |
-|ukevids       |  ✅        |     x   |        ✅       |                            |
+|ukdelviz       |  ✅        |     x   |        ✅       |                            |
 |playvids      |            |         |                 |                            |
 |xvideos       |            |         |                 |                            |
 |pornhub       |            |         |                 |                            |
@@ -65,8 +65,6 @@ getting data
 >>> vds = sp.search_porn('joyce oliveira',page_limit=2)
 [23:21:24 09/01/2023 (SpankBang)]:  finding 97 videos from 1 pages of 2 limit pages... 
 [23:21:25 09/01/2023 (SpankBang)]:  finding 196 videos from 2 pages of 2 limit pages... 
-
-
 
 >>> vds
 SpankBang(
@@ -125,8 +123,6 @@ if you seach just the name pornstar (saved on site pornone), he return the video
 [23:06:46 09/01/2023 (pornone)]:  is page pornstar from Joyce Oliveira - https://pornone.com/joyce-oliveira-porn-videos-935/2/ 
 [23:06:46 09/01/2023 (pornone)]:  finding 72 videos from 2 pages of 2 limit pages... 
 
-
-
 >>>> type(vds)
 dreams.settings.DataVideos
 
@@ -172,23 +168,21 @@ pornone_video(
 dreams.settings.VideoData
 ```
 
-### Ukevids
+### Ukdelviz
 
 ```py
->>> import dreams.ukevids as uk
+>>> import dreams.ukdelviz as uk
 
 >>> vds = uk.search_porn('joyce oliveira',page_limit=2)
-[22:49:35 09/01/2023 (ukevids)]:  finding 8 videos from 1 pages of 2 limit pages... 
-[22:49:36 09/01/2023 (ukevids)]:  error Exception: invalid literal for int() with base 10: ' 2 days, 11' 
-[22:49:36 09/01/2023 (ukevids)]:  finding 28 videos from 2 pages of 2 limit pages... 
-
-
+[22:49:35 09/01/2023 (ukdelviz)]:  finding 8 videos from 1 pages of 2 limit pages... 
+[22:49:36 09/01/2023 (ukdelviz)]:  error Exception: invalid literal for int() with base 10: ' 2 days, 11' 
+[22:49:36 09/01/2023 (ukdelviz)]:  finding 28 videos from 2 pages of 2 limit pages... 
 
 >>> type(vds)
 dreams.settings.DataVideos
 
 >>> vds
-ukevids(query=joyce+oliveira,
+ukdelviz(query=joyce+oliveira,
 len_videos=28,
 len_pages=2,
 videos_per_pages=14,

@@ -12,7 +12,7 @@ asession = HTMLSession()
 from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
 import kitano.logging as lg
 
-site_name = 'ukevids'
+site_name = 'ukdelvis'
 url_base= 'https://ukdevilz.com'
 
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
@@ -35,9 +35,9 @@ br.session.headers.update(headers)
 
 
 
-
-def get_videos_uk_link(url:str,page_number:int) -> list:
-    assert (url_base in url), '[error ukevids]: it is not a url from ukevids!'
+#get url search
+def get_videos_uk_link_search(url:str,page_number:int) -> list:
+    assert (url_base in url), '[error ukdelviz]: it is not a url from ukdelviz!'
     loc = url
     url_html = br.get(url)
     url_html = url_html.text
@@ -51,7 +51,7 @@ def get_videos_uk_link(url:str,page_number:int) -> list:
             pass
             return False
         else:
-            raise Exception('[error ukevids]: dont find any videos here page!')
+            raise Exception('[error ukdelviz]: dont find any videos here page!')
 
     list_video = []
     for video in video_div:
@@ -117,7 +117,7 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
                             site_name=site_name,
                             page_limit=page_limit,
                             page_number=page_number,
-                            call_get_videos_site=get_videos_uk_link,
+                            call_get_videos_site=get_videos_uk_link_search,
                             url_base_page_number_search=url_base_page_number_search)
 
 

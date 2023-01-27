@@ -11,6 +11,7 @@ toml = "*"
 ipython = "*"
 kitano = "*"
 requests-html = "*"
+pytest = "*"
 
 [dev-packages]
 

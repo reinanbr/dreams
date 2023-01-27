@@ -37,17 +37,29 @@ class VideoData:
     title:str
     time:str
     duration:int
-    stats:str
     page_number:int
     url:str
     url_font:str
     thumbnail:str
-    preview:str
     site_name:str
-    indice:int
+    preview:str=None
+    stats:str=None
+    indice:int=None
+    views:str=None
+    rating:str=None
+    date_upload:str=None
+    duration_seconds:int=None
 
     def __repr__(self) -> str:
-        return f'{self.site_name.lower()}_video(indice={self.indice}, site_name={self.site_name}, title={self.title}, time={self.time}, duration={self.duration}, stats={self.stats}, page_number={self.page_number}, url={self.url}, url_font={self.url_font}, thumbnail={self.thumbnail}, preview={self.preview})'
+        stats = f', stats={self.stats}' if self.stats else ''
+        preview = f', preview={self.preview}' if self.preview else ''
+        indice = f', indice={self.indice}' if not self.indice==None else ''
+        views = f', views={self.views}' if self.views else ''
+        rating = f', rating={self.rating}' if self.rating else ''
+        date_upload = f', date_upload={self.date_upload}' if self.date_upload else ''
+        duration = f', duration={self.duration}' if self.duration else ''
+
+        return f'''{self.site_name.lower()}_video(site_name={self.site_name}, title={self.title}, time={self.time}, page_number={self.page_number}, url={self.url}, url_font={self.url_font}, thumbnail={self.thumbnail}{stats}{views}{rating}{date_upload}{duration}{preview}{indice}'''
 
 
 @dataclass
@@ -69,13 +81,7 @@ class EmbedVideo:
 
 
 #function base that get return data video from functions scrap site porn
-def search_porn_base(query:str,
-                     url_base:str,
-                     call_get_videos_site,
-                     url_base_page_number_search,
-                     site_name:str,
-                     page_limit=2,
-                     page_number:int=None):
+def search_porn_base(query:str, url_base:str, call_get_videos_site, url_base_page_number_search, site_name:str, page_limit=2, page_number:int=None):
     
     lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ') # configuration for puts print
     query = '+'.join(query.split(' ')) # splitting query for searching
@@ -119,15 +125,7 @@ def search_porn_base(query:str,
         len_videos_pages = int(len_videos/len_pg)
 
 
-    data_videos = DataVideos(site_name=site_name,
-                             query=query,
-                             url_base=url_base,
-                             url_search=list_videos[0].url_font,
-                             videos=list_videos,
-                             ping=time_ping_end,
-                             videos_per_pages=len_videos_pages,
-                             len_pages=len_pg,
-                             len_videos=len_videos)
+    data_videos = DataVideos(site_name=site_name,         query=query,         url_base=url_base,         url_search=list_videos[0].url_font,         videos=list_videos,         ping=time_ping_end,         videos_per_pages=len_videos_pages,         len_pages=len_pg,         len_videos=len_videos)
     return data_videos
     
 

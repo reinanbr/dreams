@@ -17,6 +17,10 @@ For it, please, help it.
 
 # config = toml.load('settings/config.toml')
 # print(config['INFO'])
+from dreams.sites import spankbang,ukdelviz,pornone,tnaflix
+
+all = [ukdelviz,spankbang,pornone,tnaflix]
+
 
 __version__ = '0.0.8'
-__author__ = 'Reinan Br <slimchatuba@gmail.com>'
+__author__ = 'ReinanBr <slimchatuba@gmail.com>'

@@ -32,10 +32,10 @@ headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 B
 
 
 url_base='https://pornone.com'
-s = rq.Session()
+#s = rq.Session()
 #s.headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36'
-s.headers = headers
-s.cookies = http.cookiejar.MozillaCookieJar("all_cookies.txt")
+#s.headers = headers
+#s.cookies = http.cookiejar.MozillaCookieJar("all_cookies.txt")
 
 # br = mec.StatefulBrowser()
 # br.session.headers = headers

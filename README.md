@@ -35,12 +35,13 @@ The initial idea from this lib, is create a API as lib for getting video's porn 
 <br>
 On the present moment (jan 5 20:49, 2023), I added the follow work's:
 
-| site         | data video | preview | embed url video | sugest. video's url's page |
+| site         | data video | preview | embed url video | sugest. embed url's video |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|
 |pornone       |         ✅ |     x   |        ✅       |                            |
-|spankbang     |         ✅ |    ✅   |        ✅       |                            |
+|spankbang     |         ✅ |    ✅   |        ✅       |                ✅          |
 |noodlemagazine|            |         |                 |                            |
-|ukdelviz       |  ✅        |     x   |        ✅       |                            |
+|ukdelviz      |  ✅        |     x   |        ✅       |                            |
+|tnaflix       |     ✅     |    ✅   |                 |                            |
 |playvids      |            |         |                 |                            |
 |xvideos       |            |         |                 |                            |
 |pornhub       |            |         |                 |                            |

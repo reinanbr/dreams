@@ -48,7 +48,7 @@ url_base='https://pornone.com'
 
 
 
-def get_videos_bg_link(url:str,page_number:int) -> list:
+def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
     #print(url)
     assert (url_base in url), f'[error {site_name}]: it is not a url from {site_name}!'
     loc = url
@@ -73,18 +73,22 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
     url_html = url_html.text
     #print(url_html)
     html_parser = bs(url_html,features="html.parser")
+    
+    htm_parser = bs(asession.get(url).text,features='html.parser')
     list_video = []
+    
+    #''' is a page porn '''
     if 'Pornstar rank' in url_html:
+        if 'No videos for this user.' in html_parser.get_text():
+            puts('Ops! end page search!')
+            return False
+
         pornstar = html_parser.find('h1',{'class':'text-3xl'}).text #url_html.find('')
         url = f'{url}{page_number}/'
         puts(f'is page pornstar from {pornstar} - {url}')
-        
-        
+
         try:
             heaven = html_parser.find('div',{'class':'portrait:gap-x-0.1'})
-            #puts('heaven is find!') 
-            # error: 'No videos for this user.'
-            #print(heaven)#video_div = html_parser.find_all('div',{'class':'video-item'})
         except:
             if argument_bool_throw_error_find_videos:
                 pass
@@ -92,7 +96,11 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             else:
                 raise Exception(f'[error {site_name}]: dont find any videos here page!')
 
-        
+        #'''it work line, is for stopping the code in end page search'''
+        if 'No videos for this user.' in html_parser.get_text():
+            puts('Ops! end page search!')
+            return False
+
         videos = heaven.find_all('a',{'class':'relative'})
         i = 0
         for vd in videos:
@@ -101,8 +109,6 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             stats = vd.find('div',{'class':'vidInfo'}).text
             url_img = vd.find('img',{'class':'imgvideo'})['src']
             url_video = vd['href']
-
-
             min,seg = time_video.split(':')[0],time_video.split(':')[1]
             dur = (int(min)*60)+int(seg)
 
@@ -122,11 +128,24 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             list_video.append(Vid)
         return list_video
 
-
+    #'''is not a page porn'''
     else:
-       #puts(f'is not page pornstar - {url}')
 
-    #assert (not ('We could not find any videos for' in  html_parser.get_text())), '[error spankbang]: site dont have videos more here page!'
+       #'''it work line, is for stopping the code in end page search'''
+       if 'No results found for this criteria.' in html_parser.get_text():
+            puts('Ops! end page search!')
+            return False
+       #print(htm_parser.get_text())
+       print(htm_parser.get_text().lower().count('lorena'),query.split(' '))
+       if query.count(' '):
+         if htm_parser.get_text().lower().count(query.split(' ')[0]) <= 2:
+            puts('Ops! end page search! Query init dont found!')
+            return False
+       else:
+           if htm_parser.get_text().lower().count(query) <= 2:
+            puts('Ops! end page search! Query init dont found!')
+            return False
+        #if query.split('')
 
        try:
          heaven = html_parser.find('div',{'class':'mt-1'})

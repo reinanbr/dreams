@@ -26,10 +26,6 @@
 
 <hr>
 
-## Instalation
-```sh
-pip3 install -U dreams
-```
 
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
@@ -50,7 +46,11 @@ In the present moment (jan 27 2, 16:40 UTC-3, 2023), I added the following work'
 
 
 <br>
-if you want help it free project, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me</a>.
+Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me</a>.
+
+<hr>
+
+# Examples 
 
 ## getting videos data search
 

@@ -23,7 +23,7 @@ lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
 
 
 headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
-            'connection': 'keep-alive', 'upgrade-insecure-requests': '1', 
+            'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
 #            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
             'accept-encoding': 'gzip, deflate',
@@ -44,7 +44,7 @@ br.session.headers.update(headers)
 
 
 
-def get_videos_bg_link(url:str,page_number:int) -> list:
+def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
 
     assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
     loc = url
@@ -63,6 +63,12 @@ def get_videos_bg_link(url:str,page_number:int) -> list:
             raise Exception('[error spankbang]: dont find any videos here page!')
 
     list_video = []
+    
+    #'''it work line, is for stopping the code in end page search'''
+    if 'We could not find any videos for ' in html_parser.get_text():
+        puts('Ops! end page search!')
+        return False
+
     indice = 0
     for video in video_div:
         url_video = f"{url_base}{video.find('a')['href']}"

@@ -4,8 +4,10 @@ from setuptools import find_packages, setup
 with open("README.md", "r") as fh:
     readme = fh.read()
 
+
+
 setup(name='dreams',
-    version='0.1.8.10',
+    version='0.1.9.7.3',
     url='https://github.com/reinanbr/dreams',
     license='BSD v3',
     author='Reinan Br',

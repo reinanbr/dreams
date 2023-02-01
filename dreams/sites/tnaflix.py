@@ -5,18 +5,17 @@ from collections import namedtuple
 #import re
 import time
 
-from dreams.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
 from dreams.settings import argument_bool_throw_error_find_videos, EmbedVideo,DataVideos, search_porn_base,VideoData
+from kitano import puts
 import kitano.logging as lg
 
 site_name = 'tnaflix'
 url_base= 'https://tnaflix.com'
 
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
-
 
 headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
             'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
@@ -34,12 +33,22 @@ br.session.headers.update(headers)
 
 
 #get url search
-def get_videos_tn_link_search(url:str,page_number:int) ->list:
+def get_videos_tn_link_search(url:str,page_number:int,query:str) ->list:
     assert (url_base in url), f'[error {site_name}]: it is not a url from {site_name}'
     loc = url
     url_htm = asession.get(url)
     url_html = url_htm.text
     html_parser = bs(url_html,features="html.parser")
+
+    if query.count(' '):
+        if html_parser.get_text().count(query.split(' ')[0])< 3:
+            puts('Ops! end page search! Query init dont found!')
+            return False
+    else:
+        if html_parser.get_text().count(query) < 3:
+            puts('Ops! end page search! Query init dont found!')
+            return False
+
     try:
         video_ul = html_parser.find('ul',{'class':'thumbsList'})
     except:
@@ -48,7 +57,13 @@ def get_videos_tn_link_search(url:str,page_number:int) ->list:
             return False
         else:
             raise Exception(f'[error {site_name}]: dont find any videos here page!')
-        
+
+    #'''it work line, is for stopping the code in end page search'''
+    if page_number > int(url_htm.url.split('&page=')[1]):
+        puts('Ops! end page search! it is returned to init page search!')
+        return False
+    
+    
     list_video_li = video_ul.find_all('li')
     #print(len(list_video_li))
     videos_list = []

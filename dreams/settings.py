@@ -27,11 +27,13 @@ class DataVideos:
     len_pages:str
     len_videos:str
     url_search:str
+    sucess:bool
 
     def __repr__(self) -> str:
         return f'''
 {self.site_name}(
-    query="{self.query}", 
+    sucess="{self.sucess}",
+    query="{self.query}",
     len_videos={self.len_videos}, 
     len_pages={self.len_pages}, 
     videos_per_pages={self.videos_per_pages}, 
@@ -109,7 +111,8 @@ class EmbedVideo:
 #function base that get return data video from functions scrap site porn
 def search_porn_base(query:str, url_base:str, call_get_videos_site, url_base_page_number_search, site_name:str, page_limit=2, page_number:int=None):
     
-    lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ') # configuration for puts print
+    lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
+    query_=query# configuration for puts print
     query = '+'.join(query.split(' ')) # splitting query for searching
     list_videos = [] # list that are receive video's
 
@@ -120,8 +123,8 @@ def search_porn_base(query:str, url_base:str, call_get_videos_site, url_base_pag
         for i in range(N):
 
             url = url_base_page_number_search(query,p) # url searchQuery from package site porn
-            vds = call_get_videos_site(url,page_number=p)  # getting data videos from page search number p
-            if vds: # if is a data video, and not a return bool False as argument_bool_throw_error_find_videos, it work
+            vds = call_get_videos_site(url,page_number=p,query=query_)  # getting data videos from page search number p
+            if vds:
                 list_videos = list_videos+vds # add list videos return in list main
 
                 puts(f'finding {len(list_videos)} videos from {p} pages of {N} limit pages...') # printing it work and progress on pages
@@ -137,6 +140,8 @@ def search_porn_base(query:str, url_base:str, call_get_videos_site, url_base_pag
         list_videos = call_get_videos_site(url,page_number=p)
         #print('\r',end='')
         puts(f'{len(list_videos)} videos finds from page search number {p}!')#,end='',flush=True)
+    
+    
 
     print('\n')
     time_ping_end = time.time() - time_ping_init # getting ping
@@ -148,11 +153,12 @@ def search_porn_base(query:str, url_base:str, call_get_videos_site, url_base_pag
         len_videos_pages = len_videos
     else: # if is a search normal (with page limit), it count number per videos 
         len_pg = p-1 # because the final p is the numberVideo + 1, because is in the last work
-        len_videos_pages = int(len_videos/len_pg)
+        len_videos_pages = int(len_videos/len_pg) if len_pg else len_videos
 
 
-    data_videos = DataVideos(site_name=site_name,         query=query,         url_base=url_base,         url_search=list_videos[0].url_font,         videos=list_videos,         ping=time_ping_end,         videos_per_pages=len_videos_pages,         len_pages=len_pg,         len_videos=len_videos)
+    data_videos = DataVideos(site_name=site_name, sucess=bool(len_videos),        query=query,         url_base=url_base,         url_search=url_base_page_number_search(query,1),         videos=list_videos,         ping=time_ping_end,         videos_per_pages=len_videos_pages,         len_pages=len_pg,         len_videos=len_videos)
     return data_videos
-    
+
+
 
 

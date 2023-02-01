@@ -36,7 +36,7 @@ br.session.headers.update(headers)
 
 
 #get url search
-def get_videos_uk_link_search(url:str,page_number:int) -> list:
+def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
     assert (url_base in url), '[error ukdevilz]: it is not a url from ukdevilz!'
     loc = url
     url_html = br.get(url)
@@ -52,6 +52,11 @@ def get_videos_uk_link_search(url:str,page_number:int) -> list:
             return False
         else:
             raise Exception('[error ukdevilz]: dont find any videos here page!')
+    
+    #'''it work line, is for stopping the code in end page search'''
+    if 'Nothing Found' in html_parser.get_text():
+        puts('Ops! end page search!')
+        return False
 
     list_video = []
     i = 0

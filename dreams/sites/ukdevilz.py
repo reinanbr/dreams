@@ -9,7 +9,7 @@ from dreams.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
-from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
+from dreams.settings import argument_bool_throw_error_find_videos, headers, search_porn_base,VideoData
 import kitano.logging as lg
 
 site_name = 'ukdevilz'
@@ -17,13 +17,6 @@ url_base= 'https://ukdevilz.com'
 
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
 
-
-headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
-            'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
-#            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'accept-encoding': 'gzip, deflate',
-            'accept-language': 'pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6'}
 
 
 br = mec.StatefulBrowser()
@@ -73,20 +66,7 @@ def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
             dur = None
             puts(f'error Exception: {e}')
             pass
-        # vid = {'title':title_video,
-        #         'time':time_video,
-        #         'dur':dur,
-        #         'views':views,
-        #         'page_number':page_number,
-        #         'url_font':url,
-        #         'url_search':loc,
-        #         'url':url_video,
-        #         'thumbnail':url_img_video,
-        #         'site':site_name,
-        #         'preview':None,
-        #         # 'gif':gif_url,
-        # }
-        # print(vid)
+
         Vid = VideoData(title=title_video,
                             time=time_video,
                             duration=dur,
@@ -103,11 +83,6 @@ def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
         list_video.append(Vid)
 
     return list_video
-
-
-
-
-
 
 
 def url_base_page_number_search(query:str,page:int):

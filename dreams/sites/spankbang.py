@@ -14,20 +14,12 @@ asession = HTMLSession()
 
 
 
-from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base
+from dreams.settings import argument_bool_throw_error_find_videos,headers, search_porn_base
 from kitano import puts
 import kitano.logging as lg
 
 site_name = 'SpankBang'
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
-
-
-headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
-            'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
-#            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'accept-encoding': 'gzip, deflate',
-            'accept-language': 'pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6'}
 
 
 

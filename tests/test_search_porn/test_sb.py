@@ -9,7 +9,9 @@ def test_search_porn():
     print(vds,'\n')
     assert vds
     vds = vds.videos
-    assert vds
+    assert len(vds) > 10, f'error, the code {sb.site_name} dont getting videos'
+
+
 
 
 

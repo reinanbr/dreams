@@ -1,106 +1,137 @@
 from bs4 import BeautifulSoup as bs
-import requests as rq
-
+#import requests as rq
 import mechanicalsoup as mec
-import re
+from collections import namedtuple
+#import re
+#import time
+
+from dreams.settings import puts
+from requests_html import HTMLSession
+asession = HTMLSession()
+
+from dreams.settings import argument_bool_throw_error_find_videos, headers, search_porn_base,VideoData
+import kitano.logging as lg
+
+site_name = 'noodlemagazine'
+url_base= 'https://noodlemagazine.com'#/video/diva%20gali?p=1'
+
+lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
+
+
 
 br = mec.StatefulBrowser()
-
-
-headers = {'User-Agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36'}
-
-
-
 br.session.headers = headers
 br.session.headers.update(headers)
 
-def search_porn(query,page_limit=2,lang='pt-BR',long=False):
-	print('[nodlemagazine]')
-	#headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko), Chrome/61.0.3163.100 Safari/537.36'}
-	query = '+'.join(query.split(' '))
-	#br.addheaders = headers
 
-	#query = '%20'.join(query.split(' '))
-	list_div_content = []
-	list_div_info = []
-#url_test='https://pornoklad.me/videos/pyshnaya-mamka-s-seksualnymi-formami/'
 
-#	print(f'page n:{i}')
-	url_base='https://noodlemagazine.com' #https://noodlemagazine.com/video/sexo?p=1
-	
-	p=1
-	N = page_limit
-	list_video = []
-	for i in range(N):
-		url = f'{url_base}/video/{query}?p={p}'
 
-		url_html = br.get(url)
-		url_html = url_html.text
 
-		html_parser = bs(url_html,features="html.parser")
-		if 'Nothing Found' in  html_parser.get_text():
-			#print('ops! find the end...')
-			break
-        
-        
-		video_div = html_parser.find('div',{'class':'list_videos'})
 
-		
-		#print(len(list_video_div))
-		for video in video_div.find_all('div',{'class':'item'}):
-			url_video = f"{url_base}{video.find('a')['href']}"
-			title_video = video.find('div',{'class':'title'}).text
-			time_video = video.find('div',{'class':'m_time'}).text
-			url_img_video = video.find('img')['data-src']
+#get url search
+def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
+    assert (url_base in url), '[error nodlemagazine]: it is not a url from nodlemagazine!'
+    loc = url
+    url_html = br.get(url)
+    url_html = url_html.text
+    html_parser = bs(url_html,features="html.parser")
+    #assert (not ('Nothing Found' in  html_parser.get_text())), '[error ukevids]: site dont have videos more here page!'
 
-			vid = {'url':url_video,
-					'url_img':url_img_video,
-					'title':title_video,
-					'time':time_video
-			}
-			list_video.append(vid)
+    try:
+        video_div = html_parser.find_all('div',{'class':'item'})
+    except:
+        if argument_bool_throw_error_find_videos:
+            pass
+            return False
+        else:
+            raise Exception('[error nodlemagazine]: dont find any videos here page!')
+    
+    #'''it work line, is for stopping the code in end page search'''
+    if 'Nothing Found' in html_parser.get_text():
+        puts('Ops! end page search!')
+        return False
 
-		print('\r',end='')
-		print(f'finding {len(list_video)} videos from {p} pages...',end='',flush=True)
-		#video_div = html_parser.find_all('div',{'class':'video-item'})
-        
-		p = p + 1
-	  #print(video)
-	  #print()
-	
-# 	for span_dur in list_span_dur:
-# 	  list_dur.append(span_dur.text)
-	
-	
-# 	for img in list_img:
-# 	  if 'imgvideo' in img['class']:
-# 	    list_imgs.append(img['src'])
-# 	    list_title.append(img['alt'])
-	
-# 	#list_url = list_a
-# 	for ls in list_a:
-# 	  list_url.append(ls['href'])
-# 	  #print(ls['href'])
-# # 	  if 'p-2' in ls['class']:
-# # 	    #print(ls)
-# # 	    list_url.append(f'{url_base}/{ls["href"]}')
-	    
-# 	for i in range(len(list_url)):
-# 	  video = {'url':list_url[i],'imgUrl':list_imgs[i],
-# 	           'duration':list_dur[i],'title':list_title[i]}
-# 	  list_video.append(video)
-	print('\n')
-	return list_video
-	
-	
-# query = 'tigerr benson'
-# res = (search_porn(query))
+    list_video = []
+    i = 0
+    for video in video_div:
+        url_video = f"{url_base}{video.find('a')['href']}"
+        title_video = video.find('img')['alt']
+        time_video = video.find('div',{'class':'m_time'}).text
+        url_img_video = video.find('img')['data-src']
+        views = video.find('div',{'class':'m_views'}).text
+        min,seg = time_video.split(':')[0],time_video.split(':')[1]
+        try:
+            dur = (int(min)*60)+int(seg)
+        except Exception as e:
+            dur = None
+            puts(f'error Exception: {e}')
+            pass
 
-# print(len(res))
+        Vid = VideoData(title=title_video,
+                            time=time_video,
+                            duration=dur,
+                            page_number=page_number,
+                            url=url_video,
+                            url_font=url,
+                            stats=views,
+                            thumbnail=url_img_video,
+                            site_name=site_name,
+                            indice=i,
+                            preview=None)
+        i = i+1
 
-#for v in res:
-  #print(v,'\n')
-	
-	
+        list_video.append(Vid)
 
-	
+    return list_video
+
+
+def url_base_page_number_search(query:str,page:int):
+    return f'{url_base}/video/{query}?p={page}'
+
+
+
+
+
+
+
+def search_porn(query:str,page_limit:int=2,page_number=None):
+    return search_porn_base(query=query,
+                            url_base=url_base,
+                            site_name=site_name,
+                            page_limit=page_limit,
+                            page_number=page_number,
+                            call_get_videos_site=get_videos_uk_link_search,
+                            url_base_page_number_search=url_base_page_number_search)
+
+
+
+
+
+
+
+
+# #in the last option
+# def get_video_embed(video):
+#     url_html = br.get(video['url'])
+#     #print(url_html)
+#     url_html = url_html.text
+#     html_parser = bs(url_html,features="html.parser")
+#     #print(html_parser)
+#     if ('Sorry, this video has been deleted' in  html_parser.get_text()):
+#         return f"the [{video['title']}-{video['time']}] has been deleted!"
+#     else:
+#         url_video = html_parser.find('iframe',{'id':'iplayer'})['src'].split('&amp')[0]
+#         url_video = f'{url_base}{url_video}'
+#         return url_video
+
+
+
+
+def get_video_embed(video):
+    res = asession.get(video['url'])
+    print(res.text)
+    html_parser = bs(res.text,features="html.parser")
+
+    video = html_parser.find('iframe')
+    link = f"{url_base}{video['src'].split('&a=1')[0]}"
+    return link

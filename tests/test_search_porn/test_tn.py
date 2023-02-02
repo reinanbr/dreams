@@ -8,6 +8,10 @@ def test_search_porn():
     vds = tn.search_porn('lorena aquino')
     print(vds,'\n')
     vds = vds.videos
+    assert len(vds) > 10, f'error, the code {tn.site_name} dont getting videos'
+
+
+
 
 
 

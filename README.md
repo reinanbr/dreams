@@ -48,6 +48,10 @@ In the present moment (jan 27 2, 16:40 UTC-3, 2023), I added the following work'
 <br>
 Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me</a>.
 
+<br>
+<br>
+<b><a href='https://github.com/reinanbr/dreams/blob/main/fixed.md' title='list of versions and you fix on github'> version's fix</a></b>
+
 <hr>
 
 # Examples 

@@ -1,20 +1,45 @@
 ## Fix History
 
+<hr>
+
+<br>
+
+### Version's Fix / Added / Deleted
+
 #### New's Version Fixed
 
 
 
+##### - <a href='https://pypi.org/project/dreams/0.1.9.10.1/'>V 0.1.9.10.1</a>  (01/02/2023)
+
+- Added
+  - added noodlemagazine API videos
+  - added 'sucess' bool var in ```dreams.settings.DataVideos```
+- Fix's
+  -  fixed bug: return 0 video's on pornone list
+
+
+<br>
+
 ##### - <a href='https://pypi.org/project/dreams/0.1.9.7.3/'>V 0.1.9.7.4</a>  (01/02/2023)
-  - fixed bug [end page] 
+  -  fixed bug [end page] 
+
+<br>
+
+##### - <a href='https://pypi.org/project/dreams/0.1.9.7.3/'>V 0.1.9.7.4</a>  (01/02/2023)
+  -  fixed bug [end page] 
+
+<br>
+<hr>
+
+### need fix
 
 
-#### need fix
-
-
-##### - <a href='https://pypi.org/project/dreams/0.1.8.10/'>v0.1.8.10</a>   (27/01/2023)
-  - bug [end page] don't return error in:
+  ~~- bug [end page] don't return error in:
     - don't find search 
     - end search
-    - sending video repeat in the end search page
-  - [refat. code] organization code
-  - [added all site's from the table on it work]
+    - sending video repeat in the end search page~~
+
+##### [refat. code] organization code
+##### [add sites] adding all site's from the table on it work
+##### [add embed] adding embed in the sites API'S that is working 

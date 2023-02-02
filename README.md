@@ -29,20 +29,20 @@
 
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
-In the present moment (jan 27 2, 16:40 UTC-3, 2023), I added the following work's:
+In the present moment (Feb 01, 22:06 UTC-3, 2023), I added the following work's:
 
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
-|pornone       |         ✅ |     x   |        ✅       |                            |         36       |
-|spankbang     |         ✅ |    ✅   |        ✅       |                ✅          |         98       |
-|noodlemagazine|            |         |                 |                            |                  |
-|ukdelviz      |  ✅        |     x   |        ✅       |                            |         15       |
-|tnaflix       |     ✅     |    ✅   |        ✅        |             ✅            |         60       |
+|pornone       |     ✅     |     x   |        ✅       |                            |         36       |
+|spankbang     |     ✅     |    ✅   |        ✅       |              ✅            |         98       |
+|noodlemagazine|     ✅     |     x   |                 |                            |         24       |
+|ukdelviz      |     ✅     |     x   |        ✅       |                            |         15       |
+|tnaflix       |     ✅     |    ✅   |        ✅       |              ✅            |         60       |
 |playvids      |            |         |                 |                            |                  |
 |xvideos       |            |         |                 |                            |                  |
 |pornhub       |            |         |                 |                            |                  |
-| ma6tube      |            |         |                 |                            |                  |
-| eponer       |            |         |                 |                            |                  |
+|ma6tube       |            |         |                 |                            |                  |
+|eponer        |            |         |                 |                            |                  |
 
 
 <br>
@@ -50,7 +50,7 @@ Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me
 
 <br>
 <br>
-<b><a href='https://github.com/reinanbr/dreams/blob/main/fixed.md' title='list of versions and you fix on github'> version's fix</a></b>
+<b><a href='https://github.com/reinanbr/dreams/blob/main/fixed.md' title='list of versions and you fix on'> version's fix</a></b>
 
 <hr>
 
@@ -93,6 +93,7 @@ SpankBang(
 ```
 
 <hr>
+
 ### pornone
 
 ```py

@@ -136,9 +136,13 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
             puts('Ops! end page search!')
             return False
        #print(htm_parser.get_text())
-       print(htm_parser.get_text().lower().count('lorena'),query.split(' '))
+       #print(htm_parser.get_text().lower().count('lorena'),query.split(' '))
        if query.count(' '):
-         if htm_parser.get_text().lower().count(query.split(' ')[0]) <= 2:
+        if '' in query.split(' '):
+            query = query.split(' ')
+            del query[query.index('')]
+            query = ' '.join(query)
+        if htm_parser.get_text().lower().count(query.split(' ')[0]) <= 2:
             puts('Ops! end page search! Query init dont found!')
             return False
        else:

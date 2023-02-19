@@ -1,28 +1,20 @@
-
 from bs4 import BeautifulSoup as bs
-# import requests as rq
 from collections import namedtuple
 import mechanicalsoup as mec
 from dreams.settings import VideoData,EmbedVideo
-# import re
-# import logging
-# import time
-
-#from dreams.settings import puts
-from requests_html import HTMLSession
-asession = HTMLSession()
-
-
-
 from dreams.settings import argument_bool_throw_error_find_videos,headers, search_porn_base
 from kitano import puts
 import kitano.logging as lg
+from requests_html import HTMLSession
+
+
+
+
+
 
 site_name = 'SpankBang'
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
-
-
-
+asession = HTMLSession()
 
 url_base='https://spankbang.com'
 br = mec.StatefulBrowser()
@@ -43,8 +35,7 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
     url_html = br.get(url)
     url_html = url_html.text
     html_parser = bs(url_html,features="html.parser")
-    #assert (not ('We could not find any videos for' in  html_parser.get_text())), '[error spankbang]: site dont have videos more here page!'
-
+    
     try:
         video_div = html_parser.find_all('div',{'class':'video-item'})
     except:
@@ -68,6 +59,9 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
         time_video = video.find('span',{'class':'l'}).text
         url_img_video = video.find('img')['data-src']
         stats = video.find('div',{'class':'stats'}).text
+        
+        stats=stats.replace('\n',' ').replace('\n\n','')
+        #views,rating,date_upload=
         #print(stats)
         try:
             gif_url = video.find('img')['data-preview']
@@ -96,46 +90,8 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
 
 
 
-
-
-
-
-
 def url_base_search_page(query,p):
     return f'{url_base}/s/{query}/{p}/?o=trending'
-
-
-
-def search_porn(query:str,page_limit:int=2,page_number=None):
-    """ a simple function for return data video's porn from SpankBang search
-
-    Example:
-        >>> import dreams.spankbang as sb
-        >>> sb.search_porn('natasha nice',page_limit=1)
-        {'url_base': 'https://spankbang.com', 'query': 'natasha+nice', 'ping': 2.200756072998047, 'len_videos': 98, 'videos': [{'url': 'https://spankbang.com/7btrt/video/natasha+nice+stepmom+natasha+s+big+tit+cum+candy+treat', 'url_img': 'https://tb-lb.sb-cd.com/t/12309113/1/2/w:800/t6-enh/natasha-nice-stepmom-natasha.jpg', 'title': "Natasha Nice - Stepmom Natasha'S Big Tit Cum Candy Treat", 'time': '43 min', 'gif': 'https://tbv.sb-cd.com/t/12309113/1/2/td.mp4', 'stats': '150K 100% 2 months', 'dur': 2580}, ...
-
-
-      Args:
-        query (str): _the argument for to searching in the site porn
-        page_number (int): getting video's from only it page number. Defaults to None.
-        page_limit (int, optional): _page number limit for getting . Defaults to 2.
-
-    Returns:
-        dict: dict with list video's data, ping info, site name, lens video's data
-    """
-    return search_porn_base(query=query,
-                            url_base=url_base,
-                            page_limit=page_limit,
-                            site_name=site_name,
-                            page_number=page_number,
-                            call_get_videos_site=get_videos_bg_link,
-                            url_base_page_number_search=url_base_search_page)
-
-
-
-
-
-
 
 
 def get_video_embed(url)->EmbedVideo:
@@ -187,3 +143,39 @@ def get_video_embed(url)->EmbedVideo:
                       views=players,
                       len_videos_sugestions=indice_sugestions-1,
                       videos_sugestions=list_video_sugestions)
+
+
+
+
+
+
+
+
+
+# ''' function search '''
+def search_porn(query:str,page_limit:int=2,page_number=None)->search_porn_base:
+    """ a simple function for return data video's porn from SpankBang search
+
+    Example:
+        >>> import dreams.spankbang as sb
+        >>> sb.search_porn('natasha nice',page_limit=1)
+        {'url_base': 'https://spankbang.com', 'query': 'natasha+nice', 'ping': 2.200756072998047, 'len_videos': 98, 'videos': [{'url': 'https://spankbang.com/7btrt/video/natasha+nice+stepmom+natasha+s+big+tit+cum+candy+treat', 'url_img': 'https://tb-lb.sb-cd.com/t/12309113/1/2/w:800/t6-enh/natasha-nice-stepmom-natasha.jpg', 'title': "Natasha Nice - Stepmom Natasha'S Big Tit Cum Candy Treat", 'time': '43 min', 'gif': 'https://tbv.sb-cd.com/t/12309113/1/2/td.mp4', 'stats': '150K 100% 2 months', 'dur': 2580}, ...
+
+
+      Args:
+        query (str): _the argument for to searching in the site porn
+        page_number (int): getting video's from only it page number. Defaults to None.
+        page_limit (int, optional): _page number limit for getting . Defaults to 2.
+
+    Returns:
+        dict: dict with list video's data, ping info, site name, lens video's data
+    """
+    return search_porn_base(query=query,
+                            url_base=url_base,
+                            page_limit=page_limit,
+                            site_name=site_name,
+                            page_number=page_number,
+                            call_get_videos_site=get_videos_bg_link,
+                            url_base_page_number_search=url_base_search_page)
+
+

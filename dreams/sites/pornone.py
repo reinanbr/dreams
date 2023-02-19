@@ -1,26 +1,17 @@
 from bs4 import BeautifulSoup as bs
-import requests as rq
-import http.cookiejar
-from collections import namedtuple
 from dreams.settings import puts
 from requests_html import HTMLSession
-asession = HTMLSession()
-
-
-#import mechanicalsoup as mec
-import re
-
-
-
-
-
 from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
 import kitano.logging as lg
 
+
+
+
 site_name = 'pornone'
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
+url_base='https://pornone.com'
 
-
+asession = HTMLSession()
 headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
             'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
 #            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
@@ -31,53 +22,21 @@ headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 B
 
 
 
-url_base='https://pornone.com'
-#s = rq.Session()
-#s.headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36'
-#s.headers = headers
-#s.cookies = http.cookiejar.MozillaCookieJar("all_cookies.txt")
-
-# br = mec.StatefulBrowser()
-# br.session.headers = headers
-# br.session.headers.update(headers)
-
-
-
-
-
-
 
 
 def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
-    #print(url)
     assert (url_base in url), f'[error {site_name}]: it is not a url from {site_name}!'
     loc = url
-    # loc = url
-    # seen = []
-    # while True:
-    #  r = rq.get(loc, allow_redirects=False)
-    #  #print(r.headers)
-    #  loc = r.headers['location']
-    #  if loc in seen:
-    #      break
-    #  seen.append(loc)
-    #  print(loc)
-
-    #print(url)
     url_html = asession.get(url)
-    #print(url_html.headers) #rq.get(url,headers=headers,allow_redirects=True)
-    #print(dir(url_html))
-    #print(url_html.url)
-    #print(url_html.text)
+
     url = url_html.url
     url_html = url_html.text
-    #print(url_html)
     html_parser = bs(url_html,features="html.parser")
     
     htm_parser = bs(asession.get(url).text,features='html.parser')
     list_video = []
     
-    #''' is a page porn '''
+    #''' testing if it url is a page porn '''
     if 'Pornstar rank' in url_html:
         if 'No videos for this user.' in html_parser.get_text():
             puts('Ops! end page search!')
@@ -101,8 +60,10 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
             puts('Ops! end page search!')
             return False
 
+
         videos = heaven.find_all('a',{'class':'relative'})
         i = 0
+        # getting info video from divVideos of htmlSite
         for vd in videos:
             title_video = vd.find('div',{'class':'leading-[22px]'}).text
             time_video = vd.find('span',{'class':'text-f13'}).text
@@ -128,15 +89,14 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
             list_video.append(Vid)
         return list_video
 
-    #'''is not a page porn'''
+    #'''if it is not a page porn'''
     else:
 
        #'''it work line, is for stopping the code in end page search'''
        if 'No results found for this criteria.' in html_parser.get_text():
             puts('Ops! end page search!')
             return False
-       #print(htm_parser.get_text())
-       #print(htm_parser.get_text().lower().count('lorena'),query.split(' '))
+
        if query.count(' '):
         if '' in query.split(' '):
             query = query.split(' ')
@@ -149,11 +109,10 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
            if htm_parser.get_text().lower().count(query) <= 2:
             puts('Ops! end page search! Query init dont found!')
             return False
-        #if query.split('')
-
+        
        try:
          heaven = html_parser.find('div',{'class':'mt-1'})
-         #print(heaven)#video_div = html_parser.find_all('div',{'class':'video-item'})
+
        except:
         if argument_bool_throw_error_find_videos:
             pass
@@ -163,7 +122,7 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
 
 
        videos = heaven.find_all('a',{'class':'relative'})
-       #print(len(videos))
+
        i= 0
        for vd in videos:
         title_video = vd.find('div',{'class':'leading-[22px]'}).text
@@ -198,8 +157,7 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
 
 
 def url_base_search_page(query,p):
-    url_search= f'{url_base}/search/?q={query}&sort=relevance&filter=&page={p}' #f'{url_base}/search/?q={query}'
-    #print(url_search)
+    url_search= f'{url_base}/search/?q={query}&sort=relevance&filter=&page={p}' 
     return url_search
 
 

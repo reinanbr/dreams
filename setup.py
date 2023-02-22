@@ -5,7 +5,6 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 
-
 setup(name='dreams',
     version='0.1.9.11',
     url='https://github.com/reinanbr/dreams',

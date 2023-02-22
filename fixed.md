@@ -8,6 +8,10 @@
 
 #### New's Version Fixed
 
+##### <a href='https://pypi.org/project/dreams/0.1.9.11/'>V 0.1.9.11</a> (22/02/2023)
+
+- Fixed
+   - stats - SapnkBang (views, rating, and date_upload is return in int/float now)
 
 
 ##### - <a href='https://pypi.org/project/dreams/0.1.9.10.1/'>V 0.1.9.10.1</a>  (01/02/2023)
@@ -32,14 +36,3 @@
 <br>
 <hr>
 
-### need fix
-
-
-  ~~- bug [end page] don't return error in:
-    - don't find search 
-    - end search
-    - sending video repeat in the end search page~~
-
-##### [refat. code] organization code
-##### [add sites] adding all site's from the table on it work
-##### [add embed] adding embed in the sites API'S that is working 

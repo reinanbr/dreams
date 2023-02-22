@@ -3,7 +3,7 @@ import time
 import kitano.logging as lg
 from dataclasses import dataclass
 from urllib.parse import quote,unquote
-from dreams.classes import EmbedVideo,VideoData,DataVideos
+from dreams.objects import EmbedVideo,VideoData,DataVideos
 
 
 

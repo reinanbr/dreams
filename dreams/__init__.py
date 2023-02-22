@@ -17,7 +17,8 @@ For it, please, help it.
 
 # config = toml.load('settings/config.toml')
 # print(config['INFO'])
-from dreams.sites import spankbang,pornone,tnaflix, ukdevilz,noodlemagazine
+from dreams.sites import pornone,tnaflix, ukdevilz,noodlemagazine
+from dreams.sites import spankbang
 
 all = [ukdevilz,spankbang,pornone,tnaflix,noodlemagazine]
 

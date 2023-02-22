@@ -41,7 +41,6 @@ class DataVideos:
 class VideoData:
     title:str
     time:str
-    duration:int
     page_number:int
     url:str
     url_font:str
@@ -51,8 +50,12 @@ class VideoData:
     stats:str=None
     indice:int=None
     views:str=None
+    views_int:int=None
     rating:str=None
+    rating_int:int=None
     date_upload:str=None
+    date_upload_seconds:int=None
+    duration:int=None
     duration_seconds:int=None
 
     def __repr__(self) -> str:
@@ -60,9 +63,13 @@ class VideoData:
         preview = f',\n            preview="{self.preview}"' if self.preview else ''
         indice = f',\n            indice={self.indice}' if not self.indice==None else ''
         views = f',\n            views="{self.views}"' if self.views else ''
+        views_int = f',\n            views_int={self.views_int}' if self.views_int else ''
         rating = f',\n            rating="{self.rating}"' if self.rating else ''
+        rating_int = f',\n            rating_int={self.rating_int}' if self.rating_int else ''
         date_upload = f',\n            date_upload="{self.date_upload}"' if self.date_upload else ''
+        date_upload_seconds = f',\n            date_upload_seconds={self.date_upload_seconds}' if self.date_upload_seconds else ''
         duration = f',\n            duration={self.duration}' if self.duration else ''
+        duration_seconds = f',\n            duration_seconds={self.duration_seconds}' if self.duration_seconds else ''
 
         return f'''
         {self.site_name.lower()}_video(
@@ -72,7 +79,7 @@ class VideoData:
             page_number={self.page_number}, 
             url="{self.url}", 
             url_font="{self.url_font}", 
-            thumbnail="{self.thumbnail}"{stats}{views}{rating}{date_upload}{duration}{preview}{indice})'''
+            thumbnail="{self.thumbnail}"{stats}{views}{views_int}{rating}{rating_int}{date_upload}{date_upload_seconds}{duration}{duration_seconds}{preview}{indice})'''
 
 
 

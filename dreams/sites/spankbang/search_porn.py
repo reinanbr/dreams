@@ -41,6 +41,10 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
         date_upload = stats_w['int']['date_upload']
         rating = stats_w['int']['rating']
         
+        views_str = stats_w['str']['views']
+        date_upload_str = stats_w['str']['date_upload']
+        rating_str = stats_w['str']['rating']
+        
         try:
             gif_url = video.find('img')['data-preview']
         except:
@@ -53,6 +57,9 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
                         time=time_video,
                         duration_seconds=dur,
                         stats=None,
+                        views=views_str,
+                        rating=rating_str,
+                        date_upload=date_upload_str,
                         views_int=views,
                         date_upload_seconds=date_upload,
                         rating_int=rating,

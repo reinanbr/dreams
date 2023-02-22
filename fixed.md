@@ -8,7 +8,7 @@
 
 #### New's Version Fixed
 
-##### <a href='https://pypi.org/project/dreams/0.1.9.11/'>V 0.1.9.11</a> (22/02/2023)
+##### <a href='https://pypi.org/project/dreams/0.1.9.11.1/'>V 0.1.9.11.1</a> (22/02/2023)
 
 - Fixed
    - stats - SapnkBang (views, rating, and date_upload is return in int/float now)

@@ -59,7 +59,6 @@ Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me
 ## getting videos data search
 
 ### SpankBang
-
 ```py
 
 >>> from dreams import spankbang as sb
@@ -69,13 +68,14 @@ Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me
 >>> vds
 
 SpankBang(
-    query="lorena+aquino", 
-    len_videos=196, 
+    sucess="True",
+    query="lorena%20aquino",
+    len_videos=195, 
     len_pages=2, 
-    videos_per_pages=98, 
-    ping=5.517827033996582, 
+    videos_per_pages=97, 
+    ping=3.68935227394104, 
     url_base="https://spankbang.com", 
-    url_search="https://spankbang.com/s/lorena+aquino/1/?o=trending", 
+    url_search="https://spankbang.com/s/lorena%20aquino/1/?o=trending", 
     videos=[
         spankbang_video(
             site_name="SpankBang", 
@@ -83,12 +83,17 @@ SpankBang(
             time="358 min", 
             page_number=1, 
             url="https://spankbang.com/6971t/video/lorena+aquino+slave+los+monsta+bbc", 
-            url_font="https://spankbang.com/s/lorena+aquino/1/?o=trending", 
+            url_font="https://spankbang.com/s/lorena%20aquino/1/?o=trending", 
             thumbnail="https://tbi.sb-cd.com/t/10506737/1/0/w:800/t1-enh/lorena-aquino-slave-los-monsta.jpg",
-            stats=" 150K 99% 1 year    ",
-            duration=21480,
+            views="150K",
+            views_int=150000,
+            rating="99%",
+            rating_int=99,
+            date_upload="1 year",
+            date_upload_seconds=1645519768.9531095,
+            duration_seconds=21480,
             preview="https://tbv.sb-cd.com/t/10506737/1/0/td.mp4",
-            indice=1), 
+            indice=0), 
         ...
 ```
 

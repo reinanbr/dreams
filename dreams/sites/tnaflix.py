@@ -8,7 +8,7 @@ import time
 from requests_html import HTMLSession
 asession = HTMLSession()
 
-from dreams.settings import argument_bool_throw_error_find_videos, EmbedVideo,DataVideos, search_porn_base,VideoData
+from dreams.tools.settings import argument_bool_throw_error_find_videos, EmbedVideo,DataVideos, search_porn_base,VideoData
 from kitano import puts
 import kitano.logging as lg
 

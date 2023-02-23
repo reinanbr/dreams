@@ -5,11 +5,11 @@ from collections import namedtuple
 #import re
 #import time
 
-from dreams.settings import puts
+from dreams.tools.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
-from dreams.settings import argument_bool_throw_error_find_videos, headers, search_porn_base,VideoData
+from dreams.tools.settings import argument_bool_throw_error_find_videos, headers, search_porn_base,VideoData
 import kitano.logging as lg
 
 site_name = 'ukdevilz'

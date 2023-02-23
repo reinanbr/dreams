@@ -73,13 +73,13 @@ class VideoData:
 
         return f'''
         {self.site_name.lower()}_video(
-            site_name="{self.site_name}", 
             title="{self.title}", 
             time="{self.time}", 
-            page_number={self.page_number}, 
             url="{self.url}", 
             url_font="{self.url_font}", 
-            thumbnail="{self.thumbnail}"{stats}{views}{views_int}{rating}{rating_int}{date_upload}{date_upload_seconds}{duration}{duration_seconds}{preview}{indice})'''
+            thumbnail="{self.thumbnail}",
+            site_name="{self.site_name}",
+            page_number={self.page_number}{stats}{views}{views_int}{rating}{rating_int}{date_upload}{date_upload_seconds}{duration}{duration_seconds}{preview}{indice})'''
 
 
 

@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
-from dreams.settings import puts
+from dreams.tools.settings import puts
 from requests_html import HTMLSession
-from dreams.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
+from dreams.tools.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
 import kitano.logging as lg
 
 
@@ -12,28 +12,19 @@ lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
 url_base='https://pornone.com'
 
 asession = HTMLSession()
-headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
-            'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
-#            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'accept-encoding': 'gzip, deflate',
-            'accept-language': 'pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6'}
-
-
 
 
 
 
 def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
     assert (url_base in url), f'[error {site_name}]: it is not a url from {site_name}!'
-    loc = url
     url_html = asession.get(url)
 
     url = url_html.url
     url_html = url_html.text
-    html_parser = bs(url_html,features="html.parser")
+    html_parser = bs(url_html,features="html.parser") # first look
     
-    htm_parser = bs(asession.get(url).text,features='html.parser')
+    htm_parser = bs(asession.get(url).text,features='html.parser') # validation if it is it, or it is ok
     list_video = []
     
     #''' testing if it url is a page porn '''
@@ -162,7 +153,7 @@ def url_base_search_page(query,p):
 
 
 
-def search_porn(query:str,page_limit:int=2,page_number=None):
+def search_porn(query:str):
     """ a simple function for return data video's porn from Pornone site search
 
     Example:
@@ -182,8 +173,8 @@ def search_porn(query:str,page_limit:int=2,page_number=None):
     return search_porn_base(query=query,
                             url_base=url_base,
                             site_name=site_name,
-                            page_limit=page_limit,
-                            page_number=page_number,
+                            page_limit=None,
+                            page_number=None,
                             call_get_videos_site=get_videos_bg_link,
                             url_base_page_number_search=url_base_search_page)
 

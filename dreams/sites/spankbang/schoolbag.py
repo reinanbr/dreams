@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup as bs
 from collections import namedtuple
 import mechanicalsoup as mec
-from dreams.settings import VideoData,EmbedVideo
-from dreams.settings import argument_bool_throw_error_find_videos,headers, search_porn_base
+from dreams.tools.settings import VideoData,EmbedVideo
+from dreams.tools.settings import argument_bool_throw_error_find_videos,headers, search_porn_base
 from kitano import puts
 import kitano.logging as lg
 from requests_html import HTMLSession

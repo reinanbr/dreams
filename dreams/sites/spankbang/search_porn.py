@@ -3,7 +3,7 @@ from dreams.sites.spankbang.schoolbag import url_base,argument_bool_throw_error_
 
 
 
-def get_videos_bg_link(url:str,page_number:int,query:str) -> list:
+def get_videos_bg_link(url:str,page_number:int,query:str) -> list[VideoData]:
 
     assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
 

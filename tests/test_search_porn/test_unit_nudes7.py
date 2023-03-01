@@ -7,6 +7,6 @@ from dreams.sites.only import nudes7
 
 def test_search():
     res = nudes7.search_porn('mia monroe')
+    print(res)
 
-    for i, vid in enumerate(res.videos):
-        print(i,vid)
+test_search()

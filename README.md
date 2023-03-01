@@ -31,7 +31,7 @@
 
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
-In the present moment (Feb 01, 22:06 UTC-3, 2023), I added the following work's:
+In the present moment (Mar 01, 14:29 UTC-3, 2023), I added the following work's:
 
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
@@ -287,4 +287,78 @@ tnaflix(
             duration=1509,
             preview="https://sh105.tnaflix.com/67/77/6777794/trailer.mp4?se=1674851584&ss=1ae4ea799d7834314ae41b4e4065ecb9",
             indice=0), 
+```
+
+### onlyfans sites
+
+#### virapornhub
+
+```py
+
+>>> from dreams.sites.only import viralpornhub as vp
+
+>>> vp.search_porn('mia monroe')
+
+```
+
+
+```py
+
+viralpornhub@only(
+    sucess="True",
+    query="mia%20monroe",
+    len_videos=24, 
+    len_pages=1, 
+    videos_per_pages=24, 
+    ping=2.7153677940368652, 
+    url_base="https://viralpornhub.com", 
+    url_search="https://viralpornhub.com/search/mia%20monroe", 
+    videos=[
+        viralpornhub@only_video(
+            title="Mia Monroe Velma Porn Video", 
+            time="9:22", 
+            url="https://viralpornhub.com/videos/45100/mia-monroe-velma-porn-video/", 
+            url_font="https://viralpornhub.com/search/mia%20monroe/", 
+            thumbnail="https://viralpornhub.com/contents/videos_screenshots/45000/45100/336x189/3.jpg",
+            site_name="viralpornhub@only",
+            page_number=1,
+            views="208",
+            rating="100%",
+            date_upload="22 hours ago",
+            preview="https://viralpornhub.com/get_file/3/952f0963d1d49fcd8c2ea2e297d89f6afc1eec1005/45000/45100/45100_preview.mp4/",
+            indice=0), 
+        ...
+```
+
+#### Nudes7
+
+```py
+
+>>> from dreams.sites.only import nudes7
+
+>>> nudes7.search_porn('mia monroe')
+```
+
+```py
+
+nudes7@only(
+    sucess="True",
+    query="mia%20monroe",
+    len_videos=18, 
+    len_pages=None, 
+    videos_per_pages=18, 
+    ping=1.4019057750701904, 
+    url_base="https://nudes7.com/", 
+    url_search="https://nudes7.com/?s=mia%20monroe", 
+    videos=[
+        nudes7@only_video(
+            title="Mia Monroe Nude Blowjob Sex Tape PPV Video Leaked", 
+            time="None", 
+            url="https://nudes7.com/mia-monroe-nude-blowjob-sex-tape-ppv-video-leaked-14347/", 
+            url_font="https://nudes7.com/?s=mia%20monroe", 
+            thumbnail="https://nudes7.com/wp-content/uploads/2023/03/Mia-Monroe-Nude-Blowjob-Sex-Tape-PPV-Video-Leaked.mp4.jpg",
+            site_name="nudes7@only",
+            page_number=1,
+            indice=0), 
+        ...
 ```

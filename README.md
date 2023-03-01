@@ -47,6 +47,13 @@ In the present moment (Feb 01, 22:06 UTC-3, 2023), I added the following work's:
 |eponer        |            |         |                 |                            |                  |
 
 
+And sites from <b>onlyfans</b> video's
+
+| site         | data video | preview |
+|--------------|:----------:|:-------:|
+| nudes7       |     ✅     |     x   |
+|viralpornhub  |     ✅     |    ✅   |
+
 <br>
 Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me</a>.
 

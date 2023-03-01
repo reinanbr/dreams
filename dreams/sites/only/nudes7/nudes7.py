@@ -7,7 +7,7 @@ asession = HTMLSession()
 url_base = 'https://nudes7.com/' #?s=mia+monroe'
 site_name = 'nudes7@only'
 
-def get_videos_nudes7_link(url:str,page_number:int,query:str)->list:
+def get_videos_nudes7_link(url:str,page_number:int)->list:
     url_html = asession.get(url)
     url_ = url_html.url
     html_parser = bs(url_html.text,features='html.parser')

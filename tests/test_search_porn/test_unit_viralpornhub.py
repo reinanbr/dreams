@@ -4,4 +4,6 @@
 
 from dreams.sites.only import viralpornhub as vp
 
-print(vp.search_porn('mia monroe'))
+
+def test():
+    print(vp.search_porn('mia monroe'))

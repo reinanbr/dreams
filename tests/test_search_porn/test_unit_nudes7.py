@@ -4,7 +4,9 @@
 
 from dreams.sites.only import nudes7
 
-res = nudes7.search_porn('mia monroe')
 
-for i, vid in enumerate(res.videos):
-    print(i,vid)
+def test_search():
+    res = nudes7.search_porn('mia monroe')
+
+    for i, vid in enumerate(res.videos):
+        print(i,vid)

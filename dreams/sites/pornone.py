@@ -153,7 +153,7 @@ def url_base_search_page(query,p):
 
 
 
-def search_porn(query:str):
+def search_porn(query:str,page_limit:int=2,page_number=None):
     """ a simple function for return data video's porn from Pornone site search
 
     Example:

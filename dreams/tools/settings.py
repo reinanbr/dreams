@@ -45,7 +45,7 @@ def search_porn_base(query:str, url_base:str, call_get_videos_site, url_base_pag
     time_ping_init = time.time() 
     if not page_number: 
         p = 1 
-        N = page_limit 
+        N = page_limit if page_limit else 2
         for i in range(N):
 
             url = url_base_page_number_search(query,p)

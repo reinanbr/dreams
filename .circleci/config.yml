@@ -31,7 +31,7 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - checkout
-      - run: python3 -m pip install pytest bs4 mechanicalsoup requests kitano requests-html 
+      - run: python3 -m pip install pytest bs4 mechanicalsoup requests kitano requests-html cloudscraper
       - python/install-packages:
           pkg-manager: pipenv
           # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.

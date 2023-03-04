@@ -2,7 +2,7 @@ from dreams.sites.spankbang.schoolbag import url_base,br,bs,site_name,VideoData,
 import cloudscraper
 from dreams.tools.settings import headers
 import os
-scrapper = cloudscraper.CloudScraper()
+scrapper = cloudscraper.create_scraper()#cloudscraper.CloudScraper()
 scrapper.headers = headers
 path_cookies = '.cookies.json'
 

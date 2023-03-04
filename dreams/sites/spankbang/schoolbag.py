@@ -6,7 +6,9 @@ from dreams.tools.settings import argument_bool_throw_error_find_videos,headers,
 from kitano import puts
 import kitano.logging as lg
 from requests_html import HTMLSession
+from requests.utils import cookiejar_from_dict
 import time
+import json
 
 
 
@@ -20,6 +22,28 @@ url_base='https://spankbang.com'
 br = mec.StatefulBrowser()
 br.session.headers = headers
 br.session.headers.update(headers)
+
+
+
+
+
+def save_cookies(browser:br,path_cookies:str) -> str:
+    cookies = browser.cookies.get_dict()
+    cookies_json = json.dumps(cookies)
+    with open(path_cookies,'w') as file_cookies:
+        file_cookies.write(cookies_json)
+
+
+
+
+def load_cookies(browser:br,path_cookies:str) -> str:
+    with open(path_cookies,'r') as file_cookies:
+        cookies_json = file_cookies.read()
+        cookies_dict = json.loads(cookies_json)
+    browser.cookies = cookiejar_from_dict(cookie_dict=cookies_dict)
+    
+
+
 
 
 

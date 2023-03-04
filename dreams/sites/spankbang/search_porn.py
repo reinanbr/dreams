@@ -1,14 +1,30 @@
-from dreams.sites.spankbang.schoolbag import url_base,argument_bool_throw_error_find_videos,site_name,br,puts,work_stats,bs,VideoData
-
-
-
-
+from dreams.sites.spankbang.schoolbag import url_base,argument_bool_throw_error_find_videos,site_name,br,puts,work_stats,bs,VideoData,HTMLSession,load_cookies,save_cookies
+from dreams.tools.settings import headers
+import http.cookiejar
+import requests as rq
+import os
+asession = HTMLSession()
+import cloudscraper
+scrapper = cloudscraper.CloudScraper()
+#headers = {'User-Agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36'}
+# s = rq.Session()
+# s.cookies = http.cookiejar.MozillaCookieJar(
+    # 
+path_cookies=".cookies.json"
+scrapper.headers = headers
 def get_videos_bg_link(url:str,page_number:int,query:str) -> list[VideoData]:
-
     assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
-
-    url_html = br.get(url)
+    #url = 'https://getdatausers.000webhostapp.com/index.php?file=views_headers'
+    if os.path.isfile(path_cookies):
+        load_cookies(scrapper,path_cookies)
+        #print(scrapper.cookies)
+    url_html = scrapper.get(url) # br.open(url)
+    #if 'Enable JavaScript and cookies to continue' in url_html.text:
+    #print(url_html.cookies)
+    save_cookies(url_html,path_cookies)
+    #print(url_html.url)
     url_html = url_html.text
+    #print(url_html)
     html_parser = bs(url_html,features="html.parser")
 
     try:
@@ -32,7 +48,7 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list[VideoData]:
         title_video = video.find('img')['alt']
         time_video = video.find('span',{'class':'l'}).text
         url_img_video = video.find('img')['data-src']
-        stats = video.find('div',{'class':'stats'}).text
+        stats = video.find('div',{'class':'stats'}).text #find('span').text
 
         stats=stats.replace('aa',' ').replace('\n\n\n','')
         stats_w = work_stats(stats)

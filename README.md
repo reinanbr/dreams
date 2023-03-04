@@ -28,10 +28,10 @@
 
 <hr>
 
-
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
-In the present moment (Mar 01, 14:29 UTC-3, 2023), I added the following work's:
+The SpankBang site was blocked request with cloudfare, but using the lib <a href='https://pypi.org/project/cloudscraper/'>cloudscraper</a>, (more thanks for your lib, mr. <a href='https://pypi.org/user/VeNoMouS/'>VeNoMouS</a>) we get fixed it. <br>
+In the present moment (Mar 04,11:00 UTC-3, 2023), I added the following work's:
 
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
@@ -53,6 +53,9 @@ And sites from <b>onlyfans</b> video's
 |--------------|:----------:|:-------:|
 | nudes7       |     ✅     |     x   |
 |viralpornhub  |     ✅     |    ✅   |
+
+
+<img src='https://getdatausers.000webhostapp.com/index.php?file=views_dreams'>
 
 <br>
 Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me</a>.

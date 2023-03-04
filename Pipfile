@@ -12,6 +12,8 @@ ipython = "*"
 kitano = "*"
 requests-html = "*"
 pytest = "*"
+selenium = "*"
+cloudscraper = "*"
 
 [dev-packages]
 

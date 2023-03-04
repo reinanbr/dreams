@@ -1,13 +1,17 @@
-from dreams.sites.spankbang.schoolbag import url_base,br,bs,site_name,VideoData,EmbedVideo
-
-
-
-
-
+from dreams.sites.spankbang.schoolbag import url_base,br,bs,site_name,VideoData,EmbedVideo,load_cookies,save_cookies
+import cloudscraper
+from dreams.tools.settings import headers
+import os
+scrapper = cloudscraper.CloudScraper()
+scrapper.headers = headers
+path_cookies = '.cookies.json'
 
 
 def get_video_embed(url)->EmbedVideo:
-    res = br.get(url)
+    if os.path.isfile(path_cookies):
+        load_cookies(scrapper,path_cookies)
+    res = scrapper.get(url)
+    save_cookies(res,path_cookies)
     html_parser = bs(res.text,features="html.parser")
     title =  html_parser.find('h1').text
     time = html_parser.find('span',{'class':'i-length'}).text

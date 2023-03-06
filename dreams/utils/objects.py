@@ -94,8 +94,30 @@ class EmbedVideo:
     site_name:str
     len_videos_sugestions:int
     videos_sugestions:list
+    duration_seconds:int=None
+    upload_date:str=None
+    views_int:int=None
+    likes:int=None
+    person:str=None
+    tags:str=None
+    
 
     def __repr__(self) -> str:
+        #stats = f',\n            stats="{self.stats}"' if self.stats else ''
+        #preview = f',\n            preview="{self.preview}"' if self.preview else ''
+        #indice = f',\n            indice={self.indice}' if not self.indice==None else ''
+        #views = f',\n            views="{self.views}"' if self.views else ''
+        views_int = f',\n        views_int={self.views_int}' if self.views_int else ''
+        #rating = f',\n            rating="{self.rating}"' if self.rating else ''
+        #rating_int = f',\n            rating_int={self.rating_int}' if self.rating_int else ''
+        upload_date = f',\n        upload_date="{self.upload_date}"' if self.upload_date else ''
+        #date_upload_seconds = f',\n            date_upload_seconds={self.date_upload_seconds}' if self.date_upload_seconds else ''
+        #duration = f',\n            duration={self.duration}' if self.duration else ''
+        duration_seconds = f',\n        duration_seconds={self.duration_seconds}' if self.duration_seconds else ''
+        likes = f',\n        likes={self.likes}' if self.duration_seconds else ''
+        person = f',\n        person="{self.person}"' if self.duration_seconds else ''
+        tags = f',\n        tags="{self.tags}"' if self.tags else ''
+
         return f'''
     EmbedVideo{self.site_name}(
         title="{self.title}", 
@@ -103,8 +125,8 @@ class EmbedVideo:
         url="{self.url}", 
         thumbnail="{self.thumbnail}", 
         views="{self.views}", 
-        time_published="{self.time_published}", 
-        len_videos_sugestions={self.len_videos_sugestions}, 
+        time_published="{self.time_published}"{views_int}{duration_seconds}{likes}{upload_date}{person}{tags},
+        len_videos_sugestions={self.len_videos_sugestions},
         videos_sugestions={self.videos_sugestions})'''
 
 

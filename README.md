@@ -31,13 +31,13 @@
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
 The SpankBang site was blocked request with cloudfare. <br>
-In the present moment (Mar 04,11:00 UTC-3, 2023), I added the following work's:
+In the present moment (Mar 06, 16:46 UTC-3, 2023), I added the following work's:
 
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
 |pornone       |     ✅     |     x   |        ✅       |                            |         36       |
 |~~spankbang~~ (blocked)    |     ✅     |    ✅   |        ✅       |              ✅            |         98       |
-|noodlemagazine|     ✅     |     x   |                 |                            |         24       |
+|noodlemagazine|     ✅     |     ✅     |       ✅            |        ✅                      |         24       |
 |ukdelviz      |     ✅     |     x   |        ✅       |                            |         15       |
 |tnaflix       |     ✅     |    ✅   |        ✅       |              ✅            |         60       |
 |playvids      |            |         |                 |                            |                  |
@@ -255,6 +255,43 @@ tnaflix(
 
 ``` -->
 
+
+### noodlemagazine
+
+```py
+>>> from dreams import noodlemagazine as nd
+
+>>> nd.get_video_embed('https://noodlemagazine.com/watch/-190558927_456239092')
+
+    EmbedVideoNoodleMagazine(
+        title="[sexmex] gali diva hot milf (newporn, latin, big tits, ass, blowjob, spanish, teen, milf, mother, sister, anal, porn)", 
+        time="None", 
+        url="https://nmcorp.video/player/-190558927_456239092?m=af3f0f69ad1abf20d97587c170515f2f", 
+        thumbnail="https://p2-86.pvvstream.pro/preview/eAivkKcZHl8ke9AGgtxoNw/-190558927_456239092/sun9-17.userapi.com/z12glz2pKg1psV3kfe3pbNRRIAynap8g6OdHNA/jQxKqgm02N0.jpg", 
+        views="None", 
+        time_published="None",
+        views_int=217289,
+        duration_seconds=2554,
+        likes=1500,
+        upload_date="2020-01-11",
+        person="Gali Diva",
+        tags="anal, ass, big, big tits, blowjob, brazzers, diva, gali, hot, latin, milf, mother, newporn, sexmex, sister, spanish, teen, tits",
+        len_videos_sugestions=24,
+        videos_sugestions=[
+        noodlemagazine_video(
+            title="Sexmex gali diva", 
+            time=" 27:09", 
+            url="https://noodlemagazine.com/watch/-172454327_456260979", 
+            url_font="https://noodlemagazine.com/watch/-190558927_456239092", 
+            thumbnail="https://i.mycdn.me/getVideoPreview?id=1786320652880&idx=14&type=39&tkn=67jVd9PgvdjmOg4HIGXNxRaMVTs&fn=vid_t&c_uniq_tag=1WKQjJgtNSNWBmBli-cZkWrC-_FTxsPXUg5049thwok",
+            site_name="NoodleMagazine",
+            page_number=0,
+            views=" 36.47K",
+            duration_seconds=1629,
+            indice=0), 
+        ...
+
+```
 
 ### tnaflix
 

@@ -23,7 +23,7 @@ from dreams.sites.ukdevilz import ukdevilz
 
 from dreams.sites import tnaflix
 
-from dreams.sites.noodlemagazine import noodlemagazine
+from dreams.sites import noodlemagazine
 
 all = [ukdevilz,pornone,tnaflix,noodlemagazine]
 

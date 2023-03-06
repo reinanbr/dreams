@@ -32,20 +32,18 @@ if os.path.isfile(dir_pattern_cookies):
     load_cookies(asession,dir_pattern_cookies)
     load_cookies(br.session,dir_pattern_cookies)
 
-asession.get(url_base)
-save_cookies(asession,dir_pattern_cookies)
-
-
 
 
 
 def get_video_embed(url:str)->EmbedVideo:
     url = url+'&autoPlay=1'
     res = asession.get(url)
+    save_cookies(res,dir_pattern_cookies)
     res_br = br.get(url)
     html_parser = bs(res.text,features="html.parser")
     html_parser_br = bs(res_br.text,features='html.parser')
     #print(html_parser_br)
+    
     title = html_parser.find('h1').text
     thumbnail = html_parser_br.find('img',{'class':'pVideoPreview'})['src']
     link = html_parser_br.find('meta',{'itemprop':'embedUrl'})['content']

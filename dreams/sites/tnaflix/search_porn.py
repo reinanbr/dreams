@@ -23,10 +23,6 @@ asession.headers = headers
 if os.path.isfile(dir_pattern_cookies):
     load_cookies(asession,dir_pattern_cookies)
 
-asession.get(url_base)
-save_cookies(asession,dir_pattern_cookies)
-
-
 
 
 
@@ -35,6 +31,7 @@ def get_videos_tn_link_search(url:str,page_number:int,query:str) ->list:
     assert (url_base in url), f'[error {site_name}]: it is not a url from {site_name}'
     loc = url
     url_htm = asession.get(url)
+    save_cookies(asession,dir_pattern_cookies)
     url_html = url_htm.text
     html_parser = bs(url_html,features="html.parser")
 

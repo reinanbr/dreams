@@ -1,10 +1,10 @@
 from dreams.sites.spankbang.schoolbag import url_base,br,bs,site_name,VideoData,EmbedVideo,load_cookies,save_cookies
 import cloudscraper
-from dreams.tools.settings import headers
+from dreams.utils.settings import headers
 import os
 scrapper = cloudscraper.create_scraper()#cloudscraper.CloudScraper()
 scrapper.headers = headers
-path_cookies = '.cookies.json'
+path_cookies = '.cookies_spankbang.json'
 
 
 def get_video_embed(url)->EmbedVideo:

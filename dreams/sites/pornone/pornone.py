@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
-from dreams.tools.settings import puts
+from dreams.utils.settings import puts
 from requests_html import HTMLSession
-from dreams.tools.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
+from dreams.utils.settings import argument_bool_throw_error_find_videos, search_porn_base,VideoData
 import kitano.logging as lg
 
 

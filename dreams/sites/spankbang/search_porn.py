@@ -1,5 +1,5 @@
 from dreams.sites.spankbang.schoolbag import url_base,argument_bool_throw_error_find_videos,site_name,br,puts,work_stats,bs,VideoData,HTMLSession,load_cookies,save_cookies
-from dreams.tools.settings import headers
+from dreams.utils.settings import headers
 import http.cookiejar
 import requests as rq
 import os
@@ -10,7 +10,7 @@ scrapper = cloudscraper.create_scraper()
 # s = rq.Session()
 # s.cookies = http.cookiejar.MozillaCookieJar(
     # 
-path_cookies=".cookies.json"
+path_cookies=".cookies_spankbang.json"
 scrapper.headers = headers
 def get_videos_bg_link(url:str,page_number:int,query:str) -> list[VideoData]:
     assert (url_base in url), '[error spankbang]: it is not a url from spankbang!'
@@ -19,14 +19,13 @@ def get_videos_bg_link(url:str,page_number:int,query:str) -> list[VideoData]:
         load_cookies(scrapper,path_cookies)
         #print(scrapper.cookies)
     url_html = scrapper.get(url) # br.open(url)
-    #if 'Enable JavaScript and cookies to continue' in url_html.text:
-    #print(url_html.cookies)
+
     save_cookies(url_html,path_cookies)
     #print(url_html.url)
     url_html = url_html.text
     #print(url_html)
     html_parser = bs(url_html,features="html.parser")
-
+    print(html_parser)
     try:
         video_div = html_parser.find_all('div',{'class':'video-item'})
     except:

@@ -5,15 +5,15 @@ from collections import namedtuple
 #import re
 #import time
 
-from dreams.tools.settings import puts
+from dreams.utils.settings import puts
 from requests_html import HTMLSession
 asession = HTMLSession()
 
-from dreams.tools.settings import argument_bool_throw_error_find_videos, headers, search_porn_base,VideoData
+from dreams.utils.settings import argument_bool_throw_error_find_videos, headers, search_porn_base,VideoData
 import kitano.logging as lg
 
-site_name = 'noodlemagazine'
-url_base= 'https://noodlemagazine.com'#/video/diva%20gali?p=1'
+site_name = 'ukdevilz'
+url_base= 'https://ukdevilz.com'
 
 lg.str_date(f'[%H:%M:%S %d/%m/%Y ({site_name})]: ')
 
@@ -30,7 +30,7 @@ br.session.headers.update(headers)
 
 #get url search
 def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
-    assert (url_base in url), '[error nodlemagazine]: it is not a url from nodlemagazine!'
+    assert (url_base in url), '[error ukdevilz]: it is not a url from ukdevilz!'
     loc = url
     url_html = br.get(url)
     url_html = url_html.text
@@ -44,7 +44,7 @@ def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
             pass
             return False
         else:
-            raise Exception('[error nodlemagazine]: dont find any videos here page!')
+            raise Exception('[error ukdevilz]: dont find any videos here page!')
     
     #'''it work line, is for stopping the code in end page search'''
     if 'Nothing Found' in html_parser.get_text():

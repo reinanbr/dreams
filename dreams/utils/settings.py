@@ -3,28 +3,58 @@ import time
 import kitano.logging as lg
 from dataclasses import dataclass
 from urllib.parse import quote,unquote
-from dreams.tools.objects import EmbedVideo,VideoData,DataVideos
+from dreams.utils.objects import EmbedVideo,VideoData,DataVideos
+import json
+from requests.utils import cookiejar_from_dict
+from requests import Session
 
+# tools browser
+dir_pattern_cookies = '.cookies.json'
+def save_cookies(browser:Session,path_cookies:str):
+    cookies = browser.cookies.get_dict()
+    cookies_json = json.dumps(cookies,indent=4)
+    with open(path_cookies,'w') as file_cookies:
+        file_cookies.write(cookies_json)
+
+def load_cookies(browser:Session,path_cookies:str):
+    with open(path_cookies,'r') as file_cookies:
+        cookies_json = file_cookies.read()
+        cookies_dict = json.loads(cookies_json)
+    browser.cookies = cookiejar_from_dict(cookie_dict=cookies_dict)
+    
 
 
 # for return in bool and not error raises
 argument_bool_throw_error_find_videos = True
-headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
-            'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
-#            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'accept-encoding': 'gzip, deflate',
-            'accept-language': 'pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6'}
+headers = {"connection": "keep-alive",
+"cache-control": "max-age=0",
+"sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+"sec-ch-ua-mobile": "?0",
+"sec-ch-ua-platform": "\"Linux\"",
+"user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+"sec-fetch-site": "none",
+"sec-fetch-mode": "navigate",
+"sec-fetch-user": "?1",
+"sec-fetch-dest": "document",
+"accept-encoding": "gzip, deflate, br",
+"accept-language": "en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7"
+}
 
+headers_ = {"connection":"keep-alive",
+           "cache-control":"max-age=0",
+           "user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+           "accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+           "accept-encoding":"gzip, deflate",
+           "accept-language":"en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7"}
 
-# throw error
 def throw_error(arg:bool)->None:
     global argument_bool_throw_error_find_videos
     argument_bool_throw_error_find_videos = arg
 
 
 
-headers = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
+headers_ = {'user-agent':'Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36',
             'connection': 'keep-alive', 'upgrade-insecure-requests': '1',
 #            'user-agent': 'Mozilla/5.0 (Linux; Android 12; SM-A225M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',

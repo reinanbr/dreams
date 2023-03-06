@@ -17,10 +17,15 @@ For it, please, help it.
 
 # config = toml.load('settings/config.toml')
 # print(config['INFO'])
-from dreams.sites import pornone,tnaflix, ukdevilz,noodlemagazine
-from dreams.sites import spankbang
+from dreams.sites.pornone import pornone
+#from dreams.sites import spankbang
+from dreams.sites.ukdevilz import ukdevilz
 
-all = [ukdevilz,spankbang,pornone,tnaflix,noodlemagazine]
+from dreams.sites import tnaflix
+
+from dreams.sites.noodlemagazine import noodlemagazine
+
+all = [ukdevilz,pornone,tnaflix,noodlemagazine]
 
 
 __version__ = '0.1.10'

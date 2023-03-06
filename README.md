@@ -30,13 +30,13 @@
 
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
-The SpankBang site was blocked request with cloudfare, but using the lib <a href='https://pypi.org/project/cloudscraper/'>cloudscraper</a>, (more thanks for your lib, mr. <a href='https://pypi.org/user/VeNoMouS/'>VeNoMouS</a>) we get fixed it. <br>
+The SpankBang site was blocked request with cloudfare. <br>
 In the present moment (Mar 04,11:00 UTC-3, 2023), I added the following work's:
 
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
 |pornone       |     ✅     |     x   |        ✅       |                            |         36       |
-|spankbang     |     ✅     |    ✅   |        ✅       |              ✅            |         98       |
+|~~spankbang~~ (blocked)    |     ✅     |    ✅   |        ✅       |              ✅            |         98       |
 |noodlemagazine|     ✅     |     x   |                 |                            |         24       |
 |ukdelviz      |     ✅     |     x   |        ✅       |                            |         15       |
 |tnaflix       |     ✅     |    ✅   |        ✅       |              ✅            |         60       |
@@ -70,7 +70,7 @@ Please, <a href="https://github.com/reinanbr/dreams" alt="github dreams">fork-me
 
 ## getting videos data search
 
-### SpankBang
+<!-- ### SpankBang
 ```py
 
 >>> from dreams import spankbang as sb
@@ -110,7 +110,7 @@ SpankBang(
 ```
 
 <hr>
-
+ -->
 ### pornone
 
 ```py
@@ -220,7 +220,7 @@ tnaflix(
 <hr>
 
 ## get embed link info and video suggestions from link video
-
+<!-- 
 ### spankbang
 
 ```py
@@ -253,7 +253,7 @@ tnaflix(
         ...
 
 
-```
+``` -->
 
 
 ### tnaflix
@@ -263,32 +263,33 @@ tnaflix(
 
 >>> from dreams import tnaflix as tn
 
->>> embed_data = tn.get_video_embed('https://spankbang.com/4b5uc/video/lorena+aquino')
+>>> embed_data = tn.get_video_embed('https://www.tnaflix.com/big-boobs/MILG-LATINA-ESPERTA-Gali-Diva/video7957213')
 
 >>> embed_data
 
-    EmbedVideotnaflix(
-        title= Lorena Aquino big boobs brazilian blonde outdoors fuck, 
-        time=None, 
-        url=https://sl105.tnaflix.com/67/77/6777794/lorena-aquino-big-boobs-brazilian-blonde-outdoors-fuck-480p.mp4?burst=2148802&speed=120832&end=1674855442&secure=011e950f9245ed9851c2d, 
-        thumbnail=https://img.tnastatic.com/a16:8q80w300/205/10/47/1047757/thumbs/5.jpg, 
-        views=12,533, 
-        time_published=None, 
+ EmbedVideotnaflix(
+        title=" MILG LATINA ESPERTA - Gali Diva", 
+        time="None", 
+        url="https://player.tnaflix.com/video/7957213", 
+        thumbnail="https://img.tnastatic.com/a16:8q80w300/206/15/76/1576707/thumbs/5.jpg", 
+        views="1,736", 
+        time_published="None", 
         len_videos_sugestions=16, 
         videos_sugestions=[
         tnaflix_video(
-            site_name="tnaflix", 
-            title="Lorena Aquino big boobs brazilian blonde outdoors fuck", 
-            time="25:09", 
-            page_number=0, 
-            url="https://tnaflix.com/anal-porn/Lorena-Aquino-big-boobs-brazilian-blonde-outdoors-fuck/video6777794", 
-            url_font="https://www.tnaflix.com/anal-porn/Lorena-Aquino-big-boobs-brazilian-blonde-outdoors-fuck/video6777794&autoPlay=1", 
-            thumbnail="https://img.tnastatic.com/a16:8q80w300/105/67/77/6777794/thumbs/10.jpg",
-            views="1,225",
-            rating="100%",
-            date_upload="1.3 year's ago",
-            duration=1509,
-            preview="https://sh105.tnaflix.com/67/77/6777794/trailer.mp4?se=1674851584&ss=1ae4ea799d7834314ae41b4e4065ecb9",
+            title="MILG LATINA ESPERTA - Gali Diva", 
+            time="31:41", 
+            url="https://tnaflix.com/big-boobs/MILG-LATINA-ESPERTA-Gali-Diva/video7957213", 
+            url_font="https://www.tnaflix.com/big-boobs/MILG-LATINA-ESPERTA-Gali-Diva/video7957213&autoPlay=1", 
+            thumbnail="https://img.tnastatic.com/a16:8q80w300/104/79/57/7957213/thumbs/10.jpg",
+            site_name="tnaflix",
+            page_number=0,
+            views="4,108",
+            rating="94%",
+            date_upload="4.3 month's ago",
+            duration=1901,
+            duration_seconds=1901,
+            preview="https://sh104.tnaflix.com/79/57/7957213/trailer.mp4?se=1678117333&ss=5c439028a3f8b6c4e1bc9fec65a4a079",
             indice=0), 
 ```
 

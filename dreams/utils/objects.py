@@ -21,7 +21,7 @@ class DataVideos:
     def __repr__(self) -> str:
         return f'''
 {self.site_name}(
-    sucess="{self.sucess}",
+    sucess={self.sucess},
     query="{self.query}",
     len_videos={self.len_videos}, 
     len_pages={self.len_pages}, 
@@ -98,12 +98,12 @@ class EmbedVideo:
     def __repr__(self) -> str:
         return f'''
     EmbedVideo{self.site_name}(
-        title={self.title}, 
-        time={self.time}, 
-        url={self.url}, 
-        thumbnail={self.thumbnail}, 
-        views={self.views}, 
-        time_published={self.time_published}, 
+        title="{self.title}", 
+        time="{self.time}", 
+        url="{self.url}", 
+        thumbnail="{self.thumbnail}", 
+        views="{self.views}", 
+        time_published="{self.time_published}", 
         len_videos_sugestions={self.len_videos_sugestions}, 
         videos_sugestions={self.videos_sugestions})'''
 

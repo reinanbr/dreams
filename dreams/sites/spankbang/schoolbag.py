@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup as bs
 from collections import namedtuple
 import mechanicalsoup as mec
-from dreams.tools.settings import VideoData,EmbedVideo
-from dreams.tools.settings import argument_bool_throw_error_find_videos,headers, search_porn_base
+from dreams.utils.settings import VideoData,EmbedVideo,load_cookies,save_cookies
+from dreams.utils.settings import argument_bool_throw_error_find_videos,headers, search_porn_base
 from kitano import puts
 import kitano.logging as lg
 from requests_html import HTMLSession
@@ -25,23 +25,6 @@ br.session.headers.update(headers)
 
 
 
-
-
-def save_cookies(browser:br,path_cookies:str) -> str:
-    cookies = browser.cookies.get_dict()
-    cookies_json = json.dumps(cookies)
-    with open(path_cookies,'w') as file_cookies:
-        file_cookies.write(cookies_json)
-
-
-
-
-def load_cookies(browser:br,path_cookies:str) -> str:
-    with open(path_cookies,'r') as file_cookies:
-        cookies_json = file_cookies.read()
-        cookies_dict = json.loads(cookies_json)
-    browser.cookies = cookiejar_from_dict(cookie_dict=cookies_dict)
-    
 
 
 

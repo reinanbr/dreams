@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 from requests_html import HTMLSession
-from dreams.tools.objects import VideoData,DataVideos
-from dreams.tools.settings import search_porn_base
+from dreams.utils.objects import VideoData,DataVideos
+from dreams.utils.settings import search_porn_base
 
 asession = HTMLSession()
 url_base = 'https://nudes7.com/' #?s=mia+monroe'

@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 
 setup(name='dreams',
-    version='0.2',
+    version='0.3',
     url='https://github.com/reinanbr/dreams',
     license='BSD v3',
     author='Reinan Br',

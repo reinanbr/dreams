@@ -31,21 +31,21 @@
 The initial idea from this lib, is create a API as lib for getting video's porn data from the best sites*, for working it in site's, bot's, app's, API's and other service's.
 <br>
 The SpankBang site was blocked request with cloudfare. <br>
-In the present moment (Mar 06, 16:46 UTC-3, 2023), I added the following work's:
+In the present moment (Mar 06, 21:01 UTC-3, 2023), I added the following work's:
 
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
 |pornone       |     ✅     |     x   |        ✅       |                            |         36       |
 |~~spankbang~~ (blocked)    |     ✅     |    ✅   |        ✅       |              ✅            |         98       |
-|noodlemagazine|     ✅     |     ✅     |       ✅            |        ✅                      |         24       |
+|noodlemagazine|     ✅     |     ✅     |      ✅          |        ✅                      |         24       |
 |ukdelviz      |     ✅     |     x   |        ✅       |                            |         15       |
 |tnaflix       |     ✅     |    ✅   |        ✅       |              ✅            |         60       |
 |playvids      |            |         |                 |                            |                  |
 |xvideos       |            |         |                 |                            |                  |
-|pornhub       |            |         |                 |                            |                  |
+|pornhub       |    ✅      |    ✅      |      ✅            |             ✅                |      22            |
 |ma6tube       |            |         |                 |                            |                  |
 |eponer        |            |         |                 |                            |                  |
-
+|upornia       |            |         |                 |                            |                  |
 
 And sites from <b>onlyfans</b> video's
 
@@ -111,6 +111,43 @@ SpankBang(
 
 <hr>
  -->
+
+### pornhub
+
+```py
+
+>>> from dreams import pornhub as ph
+
+>>> ph.search_porn('milf big ass',page_limit=8)
+
+PornHub(
+    sucess=True,
+    query="milf%20big%20ass",
+    len_videos=404, 
+    len_pages=8, 
+    videos_per_pages=50, 
+    ping=22.36020064353943, 
+    url_base="https://pornhub.com", 
+    url_search="https://pornhub.com/video/search?search=milf%20big%20ass&page=1", 
+    videos=[
+        pornhub_video(
+            title="College Classmate Came to my Room to do Homework", 
+            time="12:37", 
+            url="https://pornhub.com/view_video.php?viewkey=63dd8219f21c4", 
+            url_font="https://www.pornhub.com/video/search?search=milf+big+ass&page=1", 
+            thumbnail="https://di.phncdn.com/videos/202302/03/424743701/original/(m=eafTGgaaaa)(mh=EkAOT4sQQJxduqfM)12.jpg",
+            site_name="PornHub",
+            page_number=1,
+            views="14.7M views",
+            rating="89%",
+            date_upload="6 days ago",
+            preview="https://dw.phncdn.com/videos/202302/03/424743701/180P_225K_424743701.webm?ttl=1678145366&ri=256000&rs=1000&ipa=177.107.51.78&hash=faba555e5dbad0e12209740f1d6eba36",
+            indice=0), 
+
+
+```
+
+
 ### pornone
 
 ```py
@@ -329,6 +366,45 @@ tnaflix(
             preview="https://sh104.tnaflix.com/79/57/7957213/trailer.mp4?se=1678117333&ss=5c439028a3f8b6c4e1bc9fec65a4a079",
             indice=0), 
 ```
+
+### PornHub
+
+```py
+>>> from dreams import pornhub as ph
+
+>>> ph.get_video_embed('https://pt.pornhub.com/view_video.php?viewkey=ph62d65cfe4d0f0')
+
+
+    EmbedVideoPornHub(
+        title="(Watch This) Thick Ass Teacher Makes Student CUM IN HER! | Jessica Jax Fucks Young Guy", 
+        time="None", 
+        url="https://pt.pornhub.com/embed/ph62d65cfe4d0f0", 
+        thumbnail="https://di.phncdn.com/videos/202207/19/412021581/thumbs_62/(m=eaAaGwObaaaa)(mh=gyLTsR8eonGxy24f)12.jpg", 
+        views="3.5M Visualiz.", 
+        time_published="None",
+        rating="91%",
+        duration_seconds=1280,
+        likes=None,
+        upload_date="7 meses atrás",
+        person="None",
+        len_videos_sugestions=50,
+        videos_sugestions=[
+        pornhub_video(
+            title="Eu e minha amiga da faculdade fazendo um trabalho de casa diferenciado.", 
+            time="12:37", 
+            url="https://pornhub.com/view_video.php?viewkey=63dd8219f21c4", 
+            url_font="https://pt.pornhub.com/view_video.php?viewkey=ph62d65cfe4d0f0", 
+            thumbnail="https://di.phncdn.com/videos/202302/03/424743701/original/(m=eafTGgaaaa)(mh=EkAOT4sQQJxduqfM)12.jpg",
+            site_name="PornHub",
+            page_number=0,
+            views="14.8M Visualiz.",
+            rating="89%",
+            date_upload="6 dias atrás",
+            preview="https://dw.phncdn.com/videos/202302/03/424743701/180P_225K_424743701.webm?ttl=1678149883&ri=256000&rs=1000&ipa=191.185.78.35&hash=0ad33ce746a369b243fd0451fec4dbb4",
+            indice=0), 
+```
+
+
 
 ### onlyfans sites
 

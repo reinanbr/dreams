@@ -25,8 +25,10 @@ from dreams.sites import tnaflix
 
 from dreams.sites import noodlemagazine
 
-all = [ukdevilz,pornone,tnaflix,noodlemagazine]
+from dreams.sites import pornhub
+
+all = [ukdevilz,pornhub,pornone,tnaflix,noodlemagazine]
 
 
-__version__ = '0.1.10'
+__version__ = '0.3'
 __author__ = 'ReinanBr <slimchatuba@gmail.com>'

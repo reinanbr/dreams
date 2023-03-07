@@ -94,6 +94,7 @@ class EmbedVideo:
     site_name:str
     len_videos_sugestions:int
     videos_sugestions:list
+    rating:str=None
     duration_seconds:int=None
     upload_date:str=None
     views_int:int=None
@@ -117,6 +118,7 @@ class EmbedVideo:
         likes = f',\n        likes={self.likes}' if self.duration_seconds else ''
         person = f',\n        person="{self.person}"' if self.duration_seconds else ''
         tags = f',\n        tags="{self.tags}"' if self.tags else ''
+        rating = f',\n        rating="{self.rating}"' if self.rating else ''
 
         return f'''
     EmbedVideo{self.site_name}(
@@ -125,7 +127,7 @@ class EmbedVideo:
         url="{self.url}", 
         thumbnail="{self.thumbnail}", 
         views="{self.views}", 
-        time_published="{self.time_published}"{views_int}{duration_seconds}{likes}{upload_date}{person}{tags},
+        time_published="{self.time_published}"{rating}{views_int}{duration_seconds}{likes}{upload_date}{person}{tags},
         len_videos_sugestions={self.len_videos_sugestions},
         videos_sugestions={self.videos_sugestions})'''
 

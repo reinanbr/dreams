@@ -3,7 +3,7 @@ import mechanicalsoup as mec
 from dreams.utils.settings import puts
 from requests_html import HTMLSession
 import os
-from dreams.utils.settings import headers, EmbedVideo, VideoData,load_cookies,save_cookies
+from dreams.utils.settings import headers, EmbedVideo,load_cookies,save_cookies
 import kitano.logging as lg
 from .utils import minerate_video,site_name,dir_pattern_cookies
 
@@ -23,17 +23,12 @@ if os.path.isfile(dir_pattern_cookies):
     load_cookies(br.session,dir_pattern_cookies)
 
 
-
-
 def get_video_embed(url:str):
     res = asession.get(url)
     save_cookies(res,dir_pattern_cookies)
-    #print(res.text)
+    
     html_parser = bs(res.text,features="html.parser")
-
-    #video embed info
-    #video = html_parser.find('div',{'class':'player_box'})
-    #print(video)
+    
     link_video_embed = html_parser.find('meta',{'property':'og:video'})['content'] #f"{url_base}{video['src'].split('&a=1')[0]}"
     title_video_embed = html_parser.find('meta',{'property':'og:title'})['content']
     duration_seconds_video_embed = int(html_parser.find('meta',{'property':'video:duration'})['content'])

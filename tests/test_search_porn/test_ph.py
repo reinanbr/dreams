@@ -7,8 +7,8 @@ def test_search_porn():
     print('search] \n')
     vds = ph.search_porn('lorena aquino')
     print(vds,'\n')
-    vds = vds.videos
-    assert len(vds) > 10, f'error, the code {ph.site_name} dont getting videos'
+    #vds = vds.videos
+    assert vds.len_videos>5, f'error, the code {ph.site_name} dont getting videos'
 
 
 

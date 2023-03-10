@@ -36,7 +36,7 @@ In the present moment (Mar 06, 21:01 UTC-3, 2023), I added the following work's:
 | site         | data video | preview | embed url video | sugest. embed url's video | videos per page's |
 |--------------|:----------:|:-------:|:---------------:|:--------------------------:|:----------------:|
 |pornone       |     ✅     |     x   |        ✅       |                            |         36       |
-|~~spankbang~~ (blocked)    |     ✅     |    ✅   |        ✅       |              ✅            |         98       |
+|~~spankbang~~ (blocked)    |    ✅    |    ✅   |        ✅       |              ✅            |         98       |
 |noodlemagazine|     ✅     |     ✅     |      ✅          |        ✅                      |         24       |
 |ukdelviz      |     ✅     |     x   |        ✅       |                            |         15       |
 |tnaflix       |     ✅     |    ✅   |        ✅       |              ✅            |         60       |

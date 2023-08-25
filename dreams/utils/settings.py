@@ -10,14 +10,20 @@ from requests import Session
 
 # tools browser
 dir_pattern_cookies = '.cookies.json'
+dir_cookies = ''
+def set_dir_cookies(dir:str):
+    global dir_cookies
+    dir_cookies = dir
+    
 def save_cookies(browser:Session,path_cookies:str):
     cookies = browser.cookies.get_dict()
     cookies_json = json.dumps(cookies,indent=4)
-    with open(path_cookies,'w') as file_cookies:
+    print('dir cookie',dir_cookies)
+    with open(dir_cookies+path_cookies,'w') as file_cookies:
         file_cookies.write(cookies_json)
 
 def load_cookies(browser:Session,path_cookies:str):
-    with open(path_cookies,'r') as file_cookies:
+    with open(dir_cookies+path_cookies,'r') as file_cookies:
         cookies_json = file_cookies.read()
         cookies_dict = json.loads(cookies_json)
     browser.cookies = cookiejar_from_dict(cookie_dict=cookies_dict)

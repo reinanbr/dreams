@@ -586,3 +586,5 @@ nudes7@only(
             indice=0), 
         ...
 ```
+
+<img src='https://reysofts.com.br/apis/engine/analisys_lib.php?lib_name=dreams'>

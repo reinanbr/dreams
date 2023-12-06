@@ -587,4 +587,4 @@ nudes7@only(
         ...
 ```
 
-<img src='https://reysofts.com.br/apis/engine/analisys_lib.php?lib_name=dreams'>
+<img src='https://reysofts.com.br/apis/engine/libs/analisys_lib.php?lib_name=dreams'>

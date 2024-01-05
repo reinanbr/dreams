@@ -1,0 +1,13 @@
+[Dez 25, 05:51]: [run_logs_file_tests.py]
+    > organizar para ficar mais evidente os que dão certo e os que não dão
+        - colocar prints com cores para especificar o que dá certo e oque não dá
+
+[Dez 25, 05:54]: [pipenv]
+    > o pipenv está impedindo de rodar todas os modulos disponiveis no pip 
+    e por conta disso não estamos conseguindo rodar algumas libs dentro do vs code,
+    a gente tá tendo que ir no terminal seco na mesma dir e rodar por alí.
+
+[Dez 25, 05:58]: [API de produção]
+    > Criar uma API para deixar claro qual site ainda está funcionando dentro da libs
+    e qual precisa de update em seu código de web scraping.
+    É para apenas verificação de produção.

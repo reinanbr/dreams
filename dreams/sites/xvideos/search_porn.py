@@ -23,7 +23,7 @@ def get_videos_uk_link_search(url:str,page_number:int,query:str) -> list:
     save_cookies(br.session,dir_pattern_cookies)
     url_html = url_html_.text
     html_parser = bs(url_html,features="html.parser")
-    
+
     return minerate_video(html_parser,page_number=page_number,url_font=url_html_.url)
 
 
